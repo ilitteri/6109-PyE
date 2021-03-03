@@ -1,0 +1,169 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+El término probabilidad se refiere al término de azar, y la incertidumbre en cualquier situación en la que varios resultados pueden ocurrir.
+
+\begin{definition}[Experimentos aleatorios]
+    Acciones o procesos en los cuales conocemos todos los resultados posibles pero no sabemos con certeza cuál va a ocurrir.
+\end{definition}
+
+Si conocemos todos los resultados posibles entonces podemos anotarlos, entonces definimos *espacio muestral*:
+
+\begin{definition}[Espacio muestral ($\Omega$)]
+    Es el conjunto de todos los resultados posibles del experimento aleatorio. Sus elementos, $\omega$, se llaman \textbf{elementos elementales}.
+\end{definition}
+
+\begin{defexamples} Casos que conozco todas los posibles resultados pero no el resultado final:
+    \begin{enumerate}
+        \item Tiro una moneda y observo la cara superior.\\
+        Espacio muestral:
+        \begin{equation*}
+            \Omega_{1} = \{"cara", "ceca"\}
+        \end{equation*}
+        \item Tiro una moneda 2 veces y observo que sale.\\
+        Espacio muestral:
+        \begin{equation*}
+            \Omega_{2} = \{("cara", "ceca"), ("ceca", "cara"), ("cara", "cara"), ("ceca", "ceca")\}
+        \end{equation*}
+        \item Tiro un dado y observo el resultado.\\
+        Espacio muestral:
+        \begin{equation*}
+            \Omega_{3} = \{1, 2, 3, 4, 5, 6\}
+        \end{equation*}
+        \item Registro la cantidad de personas que entran a un banco entre las 11 y las 12hs.\\
+        Espacio muestral:
+        \begin{equation*}
+            \Omega_{4} = \{0, 1, 2, 3, \dots\} = \mathbb{N}_{0}
+        \end{equation*}
+        \item Registro el tiempo entre la llegada de autos a un peaje.\\
+        Espacio muestral:
+        \begin{equation*}
+            \Omega_{5} = \{t: t \in \mathbb{R}, t \geq 0\}
+        \end{equation*}
+    \end{enumerate}
+\end{defexamples}
+
+En el estudio de la probabilidad nos interesa no solo los resultados individuales de los espacios muestrales sino que nos interesan varias recopilaciones de resultados. Por eso definimos \textit{evento} o \textit{suceso}:
+
+\begin{definition}[Evento o Suceso]
+    Es cualquier conjunto de resultados en el espacio muestral. Los resultados pueden mostrar un conjunto finito o infinito con cualquier cardinalidad.
+\end{definition}
+
+\begin{example*} Refiriendonos a (1) podemos definir un evento "A" como:
+    \begin{enumerate}
+        \item A. "El valor observado es par". (está formado por 3 eventos elementales)\
+        Asi creamos un subconjunto que corresponde a los elementos de $\Omega_{1}$ que cumple con el evento "A".
+    \end{enumerate}
+\end{example*}
+
+\begin{definition}[Espacio equiprobable]
+    Un espacio muestrable es equiprobable cuando todos sus elementos tienen la misma probabilidad de ser elegidos.
+\end{definition}
+
+\begin{definition}[Frecuencia absoluta]
+    Para un evento en particular, la frecuencia absoluta es la cantidad de veces que sucede ese evento. La cantidad de veces que sucede el evento A (o \#A), se nota:
+    \begin{equation*}
+        \eta_{A}
+    \end{equation*}
+\end{definition}
+
+\begin{definition}[Frecuencia relativa]
+    Para un evento en particular, se define como la relación entre la cantidad de veces que ocurre el evento A y el número total de ensayos.
+    \begin{equation*}
+        f_{a} = \frac{\eta_{A}}{\eta}
+    \end{equation*}
+\end{definition}
+
+Ahora estamos en condiciones para definir \textit{probabilidad}.
+
+\begin{definition}[Probabilidad]
+    Probabilidad de un evento A, es un número positivo (o nulo) que se le asigna a cada suceso o evento del espacio muestral.
+\end{definition}
+
+\begin{definition}[Regla de Laplace]
+    La probabilidad de que ocurra un sucedo A se calcula como la cantidad de casos en los que ocurre ese suceso dividido los casos posbiles de ese experimento siempre y cuando los todos los elementos del espacio muestral sean equiprobables:
+    \begin{equation*}
+        P(A) = \frac{\#\text{casos favorables de A}}{\#\text{casos posibles del experimento}}
+    \end{equation*}
+\end{definition}
+
+\begin{defexamples} Regla de Laplace
+    \begin{enumerate}
+        \item Arrojo un dado equilibrado ¿cuál es la probabilidad de que observe el número 2? ¿cuál es la probabilidad de que observe un número par?\\
+        Solución:
+        \begin{itemize}
+            \item Experimento aleatorio: arrojo un dado y observo el resultado.
+            \item Espacio muestral:
+                \begin{equation*}
+                    \Omega = \{1, 2, 3, 4, 5, 6\}
+                \end{equation*}
+            \item Evento A. "Se observa el número 2".
+            \item Definición de Laplace: ¿es mi espacio equiprobable? el dado es equilibrado, por lo tanto mi espacio es equiprobable. Entonces puedo usar la definición:
+                \begin{equation*}
+                    P(A) = \frac{\mid A\mid}{\mid\Omega\mid} \therefore \mid A\mid = 1 \wedge \mid\Omega\mid = 6 \Rightarrow P(A) = \frac{1}{6}
+                \end{equation*}
+            \item Evento B. "Se observa un número par".
+            \item 
+                \begin{equation*}
+                    P(B) = \frac{\mid B\mid}{\mid\Omega\mid} = \frac{3}{6} = \frac{1}{2}.
+                \end{equation*}
+        \end{itemize}
+        \item  Un dado equilibrado se arroja 2 veces. Hallar la probabilidad de que:
+            \begin{enumerate}
+                \item  Los dos resultados sean iguales.
+                \item Los dos resultados sean distintos y su suma no supere 9.
+                \item La suma de los resultados sea 10.
+                \item El primr resultado sea 4 y el segundo resultado sea impar.
+            \end{enumerate}
+            Solución:
+            \begin{itemize}
+                \item Experimento aleatorio: arrojo un dado 2 veces y observo el resultado.
+                \item Evento $D_{i}$: "Valor observado en el tiro $i$" $i = 1, 2$
+                \item Como los resultados son muchos para escribir el conjunto entero, escribo una tabla:
+                    \begin{equation*}
+                        \Omega = \{(a, b) : a, b = \{1, 2, 3, 4, 5, 6\}\} \therefore \mid\Omega\mid = 36
+                    \end{equation*}
+                    \begin{table}[H]
+                        \begin{center}
+                            \begin{tabular}{c|c|c|c|c|c|c}
+                                $D_{2}/D_{1}$ & $1$ & $2$ & $3$ & $4$ & $5$ & $6$\\
+                                \hline
+                                $1$ & \cellcolor{orange} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan}{$\cdot$} & \cellcolor{cyan} & \cellcolor{cyan}\\
+                                \hline
+                                $2$ & \cellcolor{cyan} & \cellcolor{orange} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan}\\
+                                \hline
+                                $3$ & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{orange} & \cellcolor{cyan}{$\cdot$} & \cellcolor{cyan} & \cellcolor{cyan}\\
+                                \hline
+                                $4$ & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{orange} & \cellcolor{cyan} & \cellcolor{pink}\\
+                                \hline
+                                $5$ & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan}{$\cdot$} & \cellcolor{orange} & \cellcolor{pink}\\
+                                \hline
+                                $6$ & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{cyan} & \cellcolor{pink} & \cellcolor{pink} & \cellcolor{orange}\\
+                            \end{tabular}
+                        \end{center}
+                    \end{table}
+                \end{itemize}
+            \begin{enumerate}
+                \item \colorbox{orange}{A}: "Los dos resultados son iguales" $\therefore \mid\colorbox{orange}{A}\mid = 6$ 
+                \begin{equation*}
+                    P(A) = \frac{\mid A\mid}{\mid\Omega\mid} = \frac{6}{36} = \frac{1}{6}
+                \end{equation*}
+                \item \colorbox{cyan}{B}: "Los resultados son distintos y la suma no supera 9" $\therefore \mid\colorbox{cyan}{B}\mid = 26$
+                    \begin{equation*}
+                        P(B) = \frac{\mid B\mid}{\mid\Omega\mid} = \frac{26}{36} = \frac{13}{26}
+                    \end{equation*}
+                \item  \colorbox{pink}{C}: "La suma de los resultados sea 10s" $\therefore \mid\colorbox{pink}{C}\mid = 4$
+                    \begin{equation*}
+                        P(C) = \frac{\mid C\mid}{\mid\Omega\mid} = \frac{4}{36} = \frac{1}{9}
+                    \end{equation*}
+                \item  \colorbox{cyan}{$\cdot D$}: "El primer resultado sea 4 y el segundo resultado sea impar". $\therefore \mid\colorbox{cyan}{$\cdot D$}\mid = 4$
+                \begin{equation*}
+                    P(D) = \frac{\mid D\mid}{\mid\Omega\mid} = \frac{3}{36} = \frac{1}{12}
+                \end{equation*}
+            \end{enumerate}
+
+    \end{enumerate}
+\end{defexamples}
+
+\end{document}

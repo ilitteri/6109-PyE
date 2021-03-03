@@ -1,0 +1,68 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+
+\usepackage{blindtext}
+
+\usepackage{tikz} % Graphs
+
+\usepackage{subfiles} % Best loaded last in the preamble
+
+% \usepackage{graphicx} % Required for including pictures
+% \usepackage[figurename=Figure]{caption}
+\usepackage{float}    % For tables and other floats
+\usepackage{verbatim} % For comments and other
+\usepackage{amsmath}  % For math
+\usepackage{amssymb}  % For more math
+\usepackage{amsthm}
+% \usepackage{fullpage} % Set margins and place page numbers at bottom center
+% %\usepackage{paralist} % paragraph spacing
+% \usepackage{listings} % For source code
+% \usepackage{subfig}   % For subfigures
+% %\usepackage{physics}  % for simplified dv, and 
+% \usepackage{enumitem} % useful for itemization
+% \usepackage{siunitx}  % standardization of si units
+
+% \usepackage{tikz,bm} % Useful for drawing plots
+% %\usepackage{tikz-3dplot}
+% \usepackage{circuitikz}
+% \usepackage{dsfont}
+% \usepackage{hyperref}
+% \usepackage[T1]{fontenc}
+% \usepackage{multirow}
+
+\usepackage[table]{colortbl}
+
+\newtheorem{theorem}{Teorema}[section] % Theorem
+\newtheorem{corollary}{Corolario}[theorem] % Corollary
+\newtheorem{lemma}[theorem]{Lema} % Lemma 
+\newtheorem*{remark}{Observación} % Remark
+\newtheorem*{note}{Nota} % Note
+\newtheorem*{annotation}{Anotación} % Annotation
+\newtheorem*{conclusion}{Conclusión} % Conclusion
+\newtheorem{definition}{Definición}[section] % Definition
+\newtheorem{defexample}{Ejemplo}[definition] % Example
+\newtheorem{thexample}{Ejemplo}[definition] % Example
+\newtheorem{defexamples}{Ejemplos}[definition] % Example
+\newtheorem{thexamples}{Ejemplos}[definition] % Example
+\newtheorem*{example*}{Ejemplo} % Example
+\newtheorem*{examples*}{Ejemplos}
+\newtheorem{proposition}[theorem]{Proposición} % Proposition
+\newtheorem{conjeture}[theorem]{Conjetura} % Conjeture
+
+%opening
+\title{Notas de Probabilidad y Estadística}
+\author{Ivan Litteri}
+\date{}
+
+\begin{document}
+\maketitle
+
+% Import a section example
+% \section{Section}
+% \subfile{sections/example_section}
+
+\section{Probabilidad}
+\subfile{sections/capitulo_1}
+
+\end{document}
