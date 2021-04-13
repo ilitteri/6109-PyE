@@ -1,0 +1,56 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{enumerate}
+    \item En un pueblo, la cantidad de personas separadas según color de pelo y color de ojos se encuentra en la siguiente tabla.
+\end{enumerate}
+
+\begin{enumerate}
+    \item Elijo una persona al azar y observo su color de pelo y ojos.
+        \begin{equation*}
+            \Omega = {"personas"}
+        \end{equation*}
+        \begin{enumerate}[label=\alph*)]
+            \item A = "Tiene ojos azules y es pelirroja"
+                \begin{equation*}
+                    P(A) = \frac{|A|}{|\Omega|} = \frac{1}{80}
+                \end{equation*}
+            \item B = "Tenga ojos azules"
+                \begin{equation*}
+                    P(B) = \frac{|B|}{|\Omega|} = \frac{16}{80} = \frac{1}{5}
+                \end{equation*}
+            \item C = "Sea pelirroja"
+                \begin{equation*}
+                    P(C) = \frac{|C|}{|\Omega|} = \frac{9}{80}
+                \end{equation*}
+            \item D = "Tenga ojos azules o sea pelirroja"
+                \begin{equation*}
+                    P(D) = P(B) + P(C) - P(A) = \frac{5}{16}
+                \end{equation*}
+        \end{enumerate}
+    \item Se extraen 2 bolitas al azar y observo su color
+        \begin{enumerate}
+            \item 
+                \begin{equation*}
+                    \Omega = \{(x, y): x, y = \{B_{1}, \dots, B_{7}, R_{1}, \dots, R_{4}\}\}
+                \end{equation*}
+            \item A = "Una bolita es roja y otra es blanca"
+                \begin{equation*}
+                    P(A) = \frac{|B|\cdot|R|}{|\Omega|} = \frac{28}{121} 
+                \end{equation*}
+            \item B = "Al menos una roja"
+                \begin{equation*}
+                    P(C) = \frac{|C|}{|\Omega|} = \frac{72}{121} \therefore |C| = |\Omega| - |B|\cdot|B| = 72
+                \end{equation*}
+            \item a), b), c) sin reposición: Se extraen 2 bolitas al azar y observo su color (no la repongo)
+                \begin{equation*}
+                    \Omega = \{(x, y): x, y = \{B_{1}, \dots, B_{7}, R_{1}, \dots, R_{4}, x \neq y\}\}
+                \end{equation*}
+                \begin{equation*}
+                    P(A) = \frac{|B'|\cdot|R'|}{|\Omega|} = \frac{28}{110} 
+                \end{equation*}
+                \begin{equation*}
+                    P(C) = \frac{|C|}{|\Omega|} = \frac{68}{110} \therefore |C| = |\Omega| - |B|\cdot|B| - 4 = 68
+                \end{equation*}
+        \end{enumerate}
+    \item 
+\end{enumerate}

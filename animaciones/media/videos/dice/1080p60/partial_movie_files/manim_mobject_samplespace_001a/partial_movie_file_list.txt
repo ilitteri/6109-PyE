@@ -1,0 +1,5 @@
+# This file is used internally by FFMPEG.
+file 'file:/home/ivan/LaTeX/6109-PyE/animaciones/media/videos/dice/1080p60/partial_movie_files/manim_mobject_samplespace_001a/450974505_4037154468_2659783195.mp4'
+file 'file:/home/ivan/LaTeX/6109-PyE/animaciones/media/videos/dice/1080p60/partial_movie_files/manim_mobject_samplespace_001a/2788726626_1191539807_1260585096.mp4'
+file 'file:/home/ivan/LaTeX/6109-PyE/animaciones/media/videos/dice/1080p60/partial_movie_files/manim_mobject_samplespace_001a/2788726626_797736878_1020156935.mp4'
+file 'file:/home/ivan/LaTeX/6109-PyE/animaciones/media/videos/dice/1080p60/partial_movie_files/manim_mobject_samplespace_001a/2788726626_3759980333_3716869961.mp4'
