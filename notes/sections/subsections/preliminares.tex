@@ -1,0 +1,159 @@
+\documentclass[../../main.tex]{subfiles}
+
+\begin{definition}[Álgebra de eventos]
+    Dado $\Omega$, sea $\mathcal{A}$ una familia de subconjuntos de $\Omega$, diremos que $\mathcal{A}$ es un álgebra de eventos si:
+    \begin{enumerate}
+        \item $\Omega \in \mathcal{A}$ .
+        \item Si $B \in \mathcal{A} \Rightarrow \overline{B} \in \mathcal{A}$.
+        \item Si $B, C \in \mathcal{A} \Rightarrow B \cup C \in \mathcal{A}$.
+        \item ($\sigma$ Álgebra) Si $(A_{n})_{n \geq 1}$ es una sucesión en $\mathcal{A}$ entonces:
+            \begin{equation*}
+                \bigcup_{i = 1}^{\infty} A_{i} \in \mathcal{A}
+            \end{equation*}
+    \end{enumerate} 
+\end{definition}
+
+\begin{properties} Álgebra de eventos
+    \begin{enumerate}
+        \item $\O \in \mathcal{A}$
+        \item Si $A_{1}, \dots, A_{n} \in \mathcal{A} \Rightarrow \bigcup_{i=1}^{n}A_{i} \in \mathcal{A}$
+        \item Si $A_{1}, \dots, A_{n} \in \mathcal{A} \Rightarrow \bigcap_{i=1}^{n}A_{i} \in \mathcal{A}$
+    \end{enumerate}
+\end{properties}
+
+\begin{defexample}
+    Sea $\Omega = \{1, 2, 3, 4, 5, 6\}$. Hallar la menor álgebra de subconjuntos tal que el subconjunto $\{2, 4, 6\}$ pertenezca a ella.\\
+    Solución:\\
+    Por axioma 2 debe estar su complemento ($\{1, 3, 5\}$).\\
+    Por axioma 3 debe estar la unión ($\{1, 2, 3, 4, 5, 6\}$).\\
+    Por axioma 2 debe estar su complemento ($\{\O\}$).\\
+    El axioma 1 se cumplió por accidente.
+    \begin{equation*}
+        \mathcal{A} = \{\{2, 4, 6\}, \{1, 3, 5\}, \{1, 2, 3, 4, 5, 6\}, \{\O\}\}
+    \end{equation*}
+    De eta forma encontramos el menor álgebra de subconjuntos de $\Omega$ con la condición pedida.
+\end{defexample}
+
+\begin{definition}[Calcular probabilidad en cualquier espacio]
+    Una probabilidad (o medida de probabilidad) e suna funcion $P: \mathcal{A} \rightarrow [0, 1]$ que a cada evento $A$ le hace corresponder un número real $P(A)$ con las siguientes propiedades:
+    \begin{enumerate}
+        \item $0 \leq P(A) \leq 1, \forall A \in \mathcal{A}$ (la probabilida es un número entre 0 y 1).
+        \item $P(\Omega) = 1$.
+        \item Si $A \cap B = \O \Rightarrow P(A \cup B) = P(A) + P(B)$ (eventos mutuamente excluyentes o disjuntos: no pueden ocurrir al mismo tiempo).
+        \item (Axioma de continuidad) Para cada sucesión decreciente de eventos $A_{1} \subseteq A_{2} \subseteq A_{3} \subseteq \dots$ tal que $\bigcap_{i=1}^{infty}A_{i} = \O$ vale que $\lim_{x\to{infty}}P(A_{n}) = 0$. 
+    \end{enumerate}
+\end{definition}
+
+\begin{properties} :
+    \begin{enumerate}
+        \item Si $\overline{A}$ es el evento complementario de $A$, entonces $P(\overline{A}) = 1 - P(A)$.
+            \begin{proof}[Demostración] (usando los axiomas)\\
+                \begin{center}
+                    $\begin{aligned}
+                        \Omega =& A \cup \overline{A}\\
+                        &A \cap \overline{A} = \O\\
+                        \text{ax.2) } P(\Omega) =& P(A \cup \overline{A}) = 1\\
+                        \text{ax.3) } P(A \cup \overline{A}) =& P(A) + P(\overline{A}) = 1\\
+                        &\therefore P(\overline{A}) = 1 - P(A)
+                    \end{aligned}$
+                \end{center}
+            \end{proof}
+        \item Sean $A$ y $B$ eventos pertenecientes a $\Omega$, entonces:
+            \begin{equation*}
+                P(A \cup B) = P(A) + P(B) - P(A \cap B)
+            \end{equation*}
+            \begin{proof}[Demostración] usando los axiomas:
+                \begin{center}
+                    $\begin{aligned}
+                        Completar\\
+                    \end{aligned}$
+                \end{center}
+            \end{proof}
+        \item Si $A_{1}, A_{2}, \dots, A_{n}$ es una sucesión de elementos de $A$, mutuamente excluyentes $2$ a $2$, entonces
+            \begin{equation*}
+                P\left(\bigcup_{i=1}^{n}A_{i}\right) = \sum_{i=1}^{n}P(A_{i})
+            \end{equation*}
+    \end{enumerate}
+\end{properties}
+
+\begin{note}[¿Que significa para nosotros el álgebra de eventos?]
+    Cuando defino un experimento aleatorio puedo definir $\Omega$ pero no necesariamente puedo conocer todas las probabilidades de todos los elementos elementales, puede que me falte información, entonces el conjunto del álgebra de eventos me dice a que eventos les puedo calcular la probabilidad.
+\end{note}
+
+\begin{example*}
+    En argentina, el 80\% de los programadores usa Java, C, o ambos. El 50\% usa Java y el 4'\% usa C. ¿ Cuál es la probabilidad de que al elegir un programador al azar use:
+    \begin{enumerate}[label=\alph*)]
+        \item Java y C:
+        \item Sólo Java.
+        \item Solo C.
+        \item Ninguno de los dos lenguajes.
+    \end{enumerate}
+
+    Solución:
+
+    \begin{itemize}
+        \item Elijo el experimento aleatorio (EA):\\ "Elijo un programador al azar y me pregunto que lenguaje usa".
+        \item Defino eventos:\\
+        $J$: "El programador elegido al azar usa Java".\\
+        $C$: "El programador elegido al azar usa C".\\
+        \item Defino quién es $\Omega$ (en ese caso lo defino con un diagrama, en específico un diagrama de Venn):
+            \subfile{../../diagrams/venn_diagram.tex}
+        \item Interpreto los datos:
+            % \begin{center}
+            %     $\begin{aligned}
+            %         P(J \cup C) = 0.8\\
+            %         P(J) = 0.5\\
+            %         P(C) = 0.4\\
+            %         \therefore P(J \cup C) = P(J) + P(C) - P(J \cap C)\\
+            %         \Rightarrow P(J \cap C) = P(J) + P(C) - P(J \cup C) = 0.1
+            %     \end{aligned}$
+            % \end{center}
+            \begin{equation*}
+                P(J \cup C) = 0.8
+            \end{equation*}
+            \begin{equation*}
+                P(J) = 0.5
+            \end{equation*}
+            \begin{equation*}
+                P(C) = 0.4
+            \end{equation*}
+            \begin{equation*}
+                \therefore P(J \cup C) = P(J) + P(C) - P(J \cap C)
+            \end{equation*}
+            \begin{equation*}
+                \Rightarrow P(J \cap C) = P(J) + P(C) - P(J \cup C) = 0.1
+            \end{equation*}
+        \item Resuelvo
+            \begin{enumerate}[label=\alph*)]
+                \item $P(J \cap C) = 0.1$
+                \item $P(J \cap \overline{C}) = P(J - C \cap J) = P(J) - P(C \cap J) = 0.4$
+                \item $P(C \cap \overline{J}) = P(C - J \cap C) = P(C) - P(J \cap C) = 0.3$
+                \item "Ninguno" es el complemento de "alguno" y "alguno" $= (J \cup C)$ entonces:
+                    \begin{equation*}
+                        P(\overline{J \cup C}) = P(\overline{C} \cap \overline{J}) = 1 - P(C \cup J) = 0.2
+                    \end{equation*}
+            \end{enumerate}
+    \end{itemize}
+\end{example*}
+
+\begin{definition}[Espacio de probabilidad]
+    Es una terna $(\Omega, \mathcal{A}, P)$, donde $\Omega$ es un conjunto no vacío, $\mathcal{A}$ es un álgebra sobre $\Omega$ y $P$ es una medida de probabilidad.
+\end{definition}
+
+\begin{theorem}
+    Sea $(A_{n})_{n\geq1}$ una suscesión de eventos tales que $A_{n} \subset A_{n+1}$ $\forall n$ y $A = \bigcup_{i = 1}^{\infty} A_{i}$, luego
+        \begin{equation*}
+            P(A) = \lim_{n\rightarrow \infty} P(A_{n})
+        \end{equation*}
+        Sea $(A_{n})_{n\geq1}$ una suscesión de eventos tales que $A_{n+1} \subset A_{n}$ $\forall n$ y $A = \bigcap_{i = 1}^{\infty} A_{i}$, luego
+            \begin{equation*}
+                P(A) = \lim_{n\rightarrow \infty} P(A_{n})
+            \end{equation*}
+\end{theorem}
+
+\begin{theorem}[$\sigma$-aditividad]
+    Sea $A = \bigcup_{i = 1}^{\infty} A_{i} \in \mathcal{A}$ con los eventos $A_{i}$ mutuamente excluyentes 2 a 2 (cualquier par), entonces
+        \begin{equation*}
+            P(A) = P\left(\bigcup_{i = 1}^{\infty} A_{i}\right) = \sum_{i=1}^{\infty} P(A)
+        \end{equation*}
+\end{theorem}
