@@ -1,0 +1,46 @@
+\documentclass[../../main.tex]{subfiles}
+
+Se trata de analizar cómo afecta la información de que "un evento B ha ocurrido" a la probabilidad asignada de A.
+
+\begin{definition}
+    Sea $(\Omega, \mathcal{A}, P)$ un espacio de probabilidad, $A, B \in \mathcal{A}$ con $P(B)> 0$, la probabilidad condicional de $A$ dado que $B$ ha ocurrido está definida por:
+        \begin{equation*}
+            P(A|B) = \frac{P(A \cap B)}{B}
+        \end{equation*}
+\end{definition}
+
+\begin{properties}
+    La $P(A|B)$ para un $B$ fijo satisface todos los axiomas de probabilidad:
+    \begin{enumerate}
+        \item $0 \leq P(A|B) \leq 1$, $\forall A \in \mathcal{A}$
+            \begin{proof}
+                $$P(A|B) = \frac{P(A \cap B)}{B} \leq 1$$
+                $$\text{Si } A \cap B = \O \rightarrow P(A \cap B) = 0$$
+                $$\begin{aligned}
+                    \text{Si } A \cap B \neq \O &\rightarrow A \cap B \subseteq B\\
+                    &\rightarrow P(A \cap B) \leq P(B)
+                \end{aligned}$$
+            \end{proof}
+        \item $P(\Omega|B) = 1$
+            \begin{proof}
+                $$P(\Omega|B) = \frac{\Omega \cap B}{P(B)} = \frac{P(B)}{P(B)} \because B \subseteq \Omega$$
+            \end{proof}
+        \item Si $A \cap C = \O \rightarrow P(A \cup C|B) = P(A|B) + P(C|B)$
+        \item Si $P(B) > 0$
+            \begin{enumerate}
+                \item $P(A \cap B) = P(A|B) \cdot P(B) = P(B|A) \cdot P(A)$.
+                \item $P(A \cap B \cap C) = P(A|B \cap C) \cdot P(B \cap B) = P(A|B \cap C) \cdot P(B|C) \cdot P(C)$
+            \end{enumerate}
+    \end{enumerate}
+
+    \begin{examples*}
+        \begin{enumerate}
+            \item Si un programador usa C ¿cuál es la probabilidad de que use Java?\\
+                Tenemos que $P(C) > 0$, y que lo que sabes es $P(C)$, y buscamos $P(J)$ entonces
+                \begin{equation*}
+                    P(J|C) = \frac{P(J \cap C)}{P(C)} = \frac{0 \cdot 1}{0 \cdot 4} = \frac{1}{4}
+                \end{equation*}
+            \item 15 MINUTOS APUNTADOS DEL VIDEO
+        \end{enumerate}
+    \end{examples*}
+\end{properties}
