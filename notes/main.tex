@@ -1,9 +1,9 @@
-\documentclass{article}
+\documentclass[hidelinks]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
 
 \usepackage{blindtext}
-
+\usepackage{imakeidx}
 \usepackage{tikz} % Graphs
 
 \usepackage{subfiles} % Best loaded last in the preamble
@@ -28,7 +28,7 @@
 \usepackage{tikz-3dplot}
 \usepackage{circuitikz}
 \usepackage{dsfont}
-% \usepackage{hyperref}
+\usepackage{hyperref}
 % \usepackage[T1]{fontenc}
 % \usepackage{multirow}
 
@@ -62,17 +62,23 @@
 \author{Ivan Litteri}
 \date{}
 
+\makeindex[columns=3, title=Alphabetical Index, intoc]
+% \addto\captionsenglish{
+    \renewcommand*\contentsname{Índice}
+% }
+
 \begin{document}
 \maketitle
-
-% Import a section example
-% \section{Section}
-% \subfile{sections/example_section}
+\tableofcontents
+\clearpage
 
 \section{Probabilidad}
 \subfile{sections/capitulo_1}
+\clearpage
 
 \section{Clase 13-04}
 \subfile{sections/clase_1.tex}
+\clearpage
 
+\printindex
 \end{document}
