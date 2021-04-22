@@ -1,0 +1,28 @@
+\documentclass[../../main.tex]{subfiles}
+
+\begin{definition}[Simulación]
+    "Imitar o fingir que se está realizando una acción cuando en realidad no se está llevando a cabo."
+\end{definition}
+
+\subsubsection{¿Cómo simulo el tirar un dado?}
+\subfile{../../diagrams/simulacion_dado.tex}
+
+Tengo que definir una regla
+
+\begin{center}
+    x: Valor al elegir un n° al azar entre 0 y 1\\
+    D: Valor observado en el dado
+\end{center}
+\begin{equation*}
+    \begin{aligned}
+        \text{Si } 0 \leq x \leq \frac{1}{6} \rightarrow \text{D = 1}\\
+        \text{Si } \frac{1}{6} \leq x \leq \frac{2}{6} \rightarrow \text{D = 2}\\
+        \text{Si } \frac{2}{6} \leq x \leq \frac{3}{6} \rightarrow \text{D = 3}\\
+        \text{Si } \frac{3}{6} \leq x \leq \frac{4}{6} \rightarrow \text{D = 4}\\
+        \text{Si } \frac{4}{6} \leq x \leq \frac{5}{6} \rightarrow \text{D = 5}\\
+        \text{Si } \frac{5}{6} \leq x \leq \frac{6}{6} \rightarrow \text{D = 6}\\
+    \end{aligned}
+\end{equation*}
+
+Para estimar probabilidades a partir de simulaciones, vamos a usar la idea de frecuencia relativa, vamos a "tirar el dado" muchas veces, y teniendo una idea de chances contando la cantidad de veces que ocurría el evento que queremos observar y lo dividimos por la cantidad de veces que realizo el experimento.
+
