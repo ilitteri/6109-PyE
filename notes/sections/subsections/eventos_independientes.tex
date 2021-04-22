@@ -1,0 +1,85 @@
+\documentclass[../../main.tex]{subfiles}
+
+\begin{definition}[Eventos Independientes]
+    Sea $(\Omega, \mathcal{A}, P)$ un espacio de probabilidad, $A, B \in \mathcal{A}$ los eventos independientes si y sólo si
+    \begin{equation*}
+        P(A \cap B) = P(A) \cdot P(B)
+    \end{equation*}
+\end{definition}
+
+\begin{properties} Eventos independientes
+    \begin{enumerate}
+        \item Si $A$ y $B$ son independientes, también lo son $A$ y $\overline{B}$, $\overline{A}$ y $B$, $\overline{A}$ y $\overline{B}$. \textit{demostrar!!!}
+        \item $A_{1}, \dots, A_{n}$ son independientes si y sólo si para cada sucesión de $k$ conjuntos $2 \leq k \leq n$, la probabilidad de la intersección de los $k$ sucesos coincide con el producto de las probabilidades.
+    \end{enumerate}
+\end{properties}
+
+\begin{defexample}
+    Supongo que $A$, $B$, y $C$.
+    Para que sean independientes tiene que ocurrir que:
+    \begin{equation*}
+        \left.
+            \begin{aligned}
+                P(A \cap B) &= P(A) \cdot P(B)\\
+                P(A \cap C) &= P(A) \cdot P(C)\\
+                P(B \cap C) &= P(B) \cdot P(C)\\
+            \end{aligned}
+        \right\}
+        \quad k=2
+    \end{equation*}
+    \begin{equation*}
+        P(A \cap B \cap C) = P(A) \cdot P(B)
+        \quad k=3
+    \end{equation*}
+\end{defexample}
+
+\begin{observation}
+    Si $P(B) > 0$, cuando $A$ y $B$ son independientes ocurre que 
+    \[P(A|B)\eqdownarrowx[1.5]{P(B) > 0}\frac{P(A \cap B)}{P(B)} = \frac{P(A) \cdot P(B)}{P(B)} = P(A)\]
+\end{observation}
+
+\begin{defexample}
+    Se elije al azar una permutación de las letras A, T, C, G. Mostrar que los eventos \textit{"A pertence a T"} y \textit{"C precede a G"} son independientes.
+
+    Primero elijo mi experimento aleatorio
+    \begin{center}
+        E.A: Elijo una permutación de las letras ATCG,
+    \end{center}
+    como las letras son todas distintas entonces
+    \begin{equation*}
+        \#CP = 4! = 24
+    \end{equation*}
+    Ahora defino efentos
+    \begin{center}
+        \begin{align*}
+            AT:& "A precede a T"\\
+            CG:& "C precede a T"
+        \end{align*}
+    \end{center}
+    Mis eventos van a ser independientes tengo que calcular tres probabilidades y ver si se cumple. Como mi espacio es equiprobable, puedo usar Laplace.
+    \begin{center}
+        \begin{align*}
+            ATCG\\
+            ACTG\\
+            ACGT\\
+            CATG\\
+            CATG\\
+            CGAT
+        \end{align*}
+    \end{center}
+    veo que tengo 6 casos, e imagino que si ponía $GC$ tendría otros 6 casos, y si ponía $TA$ tendría otros 12 casos. De esta forma veo los 24 casos.
+    \begin{equation*}
+        \begin{aligned}
+            &\#AT = 6 + 6 = 12\\
+            &\#CG = 12\\
+            &\#(AT \cap CG) = 6 
+        \end{aligned}
+    \end{equation*}
+    Sólo resta calcular las probabilidades
+    \begin{equation*}
+        \begin{aligned}
+            &P(AT \cap CG) = \frac{6}{24} = \frac{1}{4}\\
+            &P(AT) \cdot P(CG) = \frac{12}{24} \cdot \frac{12}{24} = \frac{1}{4}\\
+        \end{aligned}
+    \end{equation*}
+\end{defexample}

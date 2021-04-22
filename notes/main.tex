@@ -31,6 +31,7 @@
 \usepackage{hyperref}
 % \usepackage[T1]{fontenc}
 % \usepackage{multirow}
+\usepackage{graphicx,mathtools}
 
 \usepackage[table]{colortbl}
 
@@ -56,6 +57,11 @@
 \newtheorem{properties}{Propiedades}[definition] % Property
 \newtheorem*{property*}{Propiedad} % Property
 \newtheorem*{properties*}{Propiedades} % Property
+
+\newcommand{\equparrow}[1][1]{\stackrel{\text{\scalebox{1}[#1]{$\uparrow$}}}{=}}
+\newcommand{\eqdownarrow}[1][1]{\stackrel{\text{\scalebox{1}[#1]{$\downarrow$}}}{=}}
+\newcommand{\equparrowx}[2][1]{\stackrel{\mathclap{#2}}{\equparrow[#1]}}
+\newcommand{\eqdownarrowx}[2][1]{\stackrel{\mathclap{#2}}{\eqdownarrow[#1]}}
 
 %opening
 \title{Notas de Probabilidad y Estadística}
