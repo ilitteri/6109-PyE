@@ -1,0 +1,49 @@
+\documentclass[../../main.tex]{subfiles}
+
+Puntos al azar en un continuo.
+
+El experimento consiste en elegir un numero al azar en el intervalo [0, 1]
+
+\begin{enumerate}
+    \item Hallar la probabilidad de que los primeros 3 dígitos sean 3, 1, 4 (es decir 0.314...)
+    \item Hallar la probabilidad de que el 0 no esté entre los priemros 4 dígitos.
+\end{enumerate}
+
+Lo que necesitamos es alguna manera de calcular la probabilidad para estos experimentos
+
+\begin{proposition}
+    \begin{equation*}
+        P(x \in [a; b]) = b - a
+    \end{equation*}
+\end{proposition}
+
+\begin{proof} Veo si cumple con los axiomas
+    \begin{enumerate}
+        \item $0 \leq P(A) \leq 1$, $\forall A \in \mathcal{A}$.
+        \item $P(\Omega) = 1$.
+        \item $A \cap B = \O \rightarrow P(A \cap B) = P(A) + P(B)$ 
+    \end{enumerate}
+\end{proof}
+
+Entonces para mi caso
+
+\begin{enumerate}
+    \item 
+        \begin{equation*}
+            P(x \in [0.314; 0.315)) = 0.315 - 0.314 = 0
+        \end{equation*}
+    \item No quiero al 0 en los primeros 4.
+    \textit{O: "No aparece el 0 en los primeros 4 dígitos"}
+    Lo que voy a ir haciendo es ir quitando los intervalos en donde hay un 0 en los primeros 4 dígitos, que valores de todo el segmento tienen como primer dígito un 0, eso corresponde al intervalo [0, 0.1). Haciendo lo mismo para los que tienen 0 en el segundo dígito, entonces [0.1, 0.11), [0.2, 0.21), ..., [0.9, 0.91).
+    \begin{equation*}
+        P(O) = 1 - P(x \in [0; 0.1))  P(x \in [0.1; 0.11)) \cdot 9 - \dots
+    \end{equation*}
+    \begin{equation*}
+        \begin{aligned}
+            P(O) &= 1 - 0.1 - 9 \cdot 0.01 - 9^{2} \cdot 0.001 - 9^{3} \cdot 0.0001\\
+            &= 1 - \frac{1}{10} - - \frac{9}{10} \cdot \frac{1}{10} - \left(\frac{9}{10}\right)^{2} \cdot \frac{1}{10} - \left(\frac{9}{10}\right)^{3} \cdot \frac{1}{10}\\
+            &= 1 - \sum_{i=0}^{3} \frac{1}{10} \cdot \left(\frac{9}{10}\right)^{i}
+            &=
+        \end{aligned}
+    \end{equation*}
+\end{enumerate}
