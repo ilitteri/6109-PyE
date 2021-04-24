@@ -1,0 +1,17 @@
+---
+title: "Cálculo de probabilidad de que al menos 2 personas en una sala cumplan años el mismo dia"
+output:
+  html_document:
+    toc: true
+    theme: united
+  pdf_document:
+    toc: true
+    highlight: zenburn
+---
+
+# Hola
+
+```{r}
+mydata <- read.csv("cumpleaños.csv")
+plot(mydata[, 1], mydata[, -1], type="p", pch=20, col="deepskyblue", xlab="Personas en una sala", ylab="Probabilidad de que al menos dos cumplan el mismo año")
+```
