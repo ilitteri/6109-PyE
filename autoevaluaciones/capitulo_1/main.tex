@@ -1,0 +1,211 @@
+\documentclass[hidelinks]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+
+\usepackage{blindtext}
+\usepackage{imakeidx}
+\usepackage{tikz} % Graphs
+
+\usepackage{subfiles} % Best loaded last in the preamble
+
+% \usepackage{graphicx} % Required for including pictures
+% \usepackage[figurename=Figure]{caption}
+\usepackage{float}    % For tables and other floats
+\usepackage{verbatim} % For comments and other
+\usepackage{amsmath}  % For math
+\usepackage{amssymb}  % For more math
+\usepackage{amsthm}
+\usepackage{mathrsfs}
+\usepackage{fullpage} % Set margins and place page numbers at bottom center
+% %\usepackage{paralist} % paragraph spacing
+% \usepackage{listings} % For source code
+% \usepackage{subfig}   % For subfigures
+% %\usepackage{physics}  % for simplified dv, and 
+\usepackage{enumitem} % useful for itemization
+% \usepackage{siunitx}  % standardization of si units
+
+\usepackage{tikz,bm} % Useful for drawing plots
+\usepackage{tikz-3dplot}
+\usepackage{circuitikz}
+\usepackage{dsfont}
+\usepackage{hyperref}
+% \usepackage[T1]{fontenc}
+% \usepackage{multirow}
+\usepackage{graphicx,mathtools}
+
+\usepackage[table]{colortbl}
+
+\newtheorem{theorem}{Teorema}[section] % Theorem
+\newtheorem{corollary}{Corolario}[theorem] % Corollary
+\newtheorem{lemma}[theorem]{Lema} % Lemma 
+\newtheorem*{remark}{Observación} % Remark
+\newtheorem*{note}{Nota} % Note
+\newtheorem*{annotation}{Anotación} % Annotation
+\newtheorem*{conclusion}{Conclusión} % Conclusion
+\newtheorem{definition}{Definición}[section] % Definition
+\newtheorem{defexample}{Ejemplo}[definition] % Example
+\newtheorem{thexample}{Ejemplo}[definition] % Example
+\newtheorem{defexamples}{Ejemplos}[definition] % Example
+\newtheorem{thexamples}{Ejemplos}[definition] % Example
+\newtheorem*{example*}{Ejemplo} % Example
+\newtheorem*{examples*}{Ejemplos}
+\newtheorem{proposition}[theorem]{Proposición} % Proposition
+\newtheorem{conjeture}[theorem]{Conjetura} % Conjeture
+\newtheorem{observation}{Observación}[definition]
+
+\newtheorem{property}{Propiedad}[definition] % Property
+\newtheorem{properties}{Propiedades}[definition] % Property
+\newtheorem*{property*}{Propiedad} % Property
+\newtheorem*{properties*}{Propiedades} % Property
+
+\newcommand{\equparrow}[1][1]{\stackrel{\text{\scalebox{1}[#1]{$\uparrow$}}}{=}}
+\newcommand{\eqdownarrow}[1][1]{\stackrel{\text{\scalebox{1}[#1]{$\downarrow$}}}{=}}
+\newcommand{\equparrowx}[2][1]{\stackrel{\mathclap{#2}}{\equparrow[#1]}}
+\newcommand{\eqdownarrowx}[2][1]{\stackrel{\mathclap{#2}}{\eqdownarrow[#1]}}
+
+%opening
+\title{Autoevaluación del Capítulo 1}
+\author{Ivan Litteri - 106223}
+\date{}
+
+
+\begin{document}
+\maketitle
+
+\section*{Ejercicio 2}
+
+\subsection*{Consigna}
+Florencia recibió un envío de 4 cajas que puede provenir de Victor o de Hector. Hector coloca 7 esferas en las cuatro cajas, mientras que Victor coloca 10 esferas en las cuatro cajas. Ambos eligen al azar para cada esfera la caja en la que la colocarán. La probabilidad de que el envío provenga de Victor es de 0.6. Si cuando recibe el pedido, Florencia encuentra exactamente 6 esferas en una caja, calcular la probabilidad de que el envío provenga de Víctor.
+
+\subsection*{Resolución}
+
+Quiero calcular la probabilidad de que el envío sea de Victor dado que hay exactamente 6 esferas en una caja, entonces defino el evento $F$ como
+
+\begin{center}
+    \textit{F: "En una caja hay exactamente 6 esferas"},
+\end{center}
+
+y calculo la probabilidad como la probabilidad condicional de $V$ dado $F$
+
+\begin{equation}
+    P(V|F) = \frac{P(V \cap F)}{P(F)}
+\end{equation}
+
+$\therefore P(V \cap F)$ es la probabilidad de que Victor guarde exactamente 6 esferas en una caja. Definiendo el evento \textit{FV: "En una caja de Victor hay exactamente 6 esferas"}, y ya que el espacio es equiprobable porque cada uno elige al azar una caja para cada una de las esferas puedo calcular dicha probabilidad usando Laplace tal que
+
+\begin{equation}
+    P(FV) = \frac{\#FV}{\#\Omega_{V}}
+\end{equation}
+
+$\therefore \#\Omega_{V}$ es el cardinal del espacio muestral equiprobable para el experimento aleatorio: "Coloco 10 esferas en 4 cajas al azar".
+
+\begin{equation*}
+    \Omega_{V} = \{(x, y, z, t): x, y, z, t \in \{1, 2, 3, 4, 5, 6, 7\}, x + y + z + t = 10\}
+\end{equation*}
+
+Para calcular $\#\Omega_{V}$, como se colocan al azar, cada esfera tiene 4 cajas para ser guardadas, entonces
+
+\begin{equation*}
+    \begin{aligned}
+        \#\Omega_{V} &= 4 \cdot 4 \cdot 4 \cdot 4 \cdot 4 \cdot 4 \cdot 4 \cdot 4 \cdot 4 \cdot 4\\
+                     &= 4^{10}\\
+                     &= 1048576
+    \end{aligned}
+\end{equation*}
+
+y para calcular $\#FV$ tomo 6 de las 10 esferas y las coloco en una de las 4 cajas al azar, para cada una de las 4 restantes elijo una caja al azar, luego
+
+\begin{equation*}
+    \begin{aligned}
+        \#FV &= \binom{10}{6} \cdot 3 \cdot 3 \cdot 3 \cdot 4\\
+             &= \binom{10}{6} \cdot 3^{4} \cdot 4\\
+             &= 68040
+    \end{aligned}
+\end{equation*}
+
+Reemplazando en (2)
+
+\begin{equation*}
+    \begin{aligned}
+        P(FV) &= \frac{\#FV}{\#\Omega_{V}}\\
+              &= \frac{\binom{10}{6} \cdot 3^{4} \cdot 4}{4^{10}}\\
+              &\approx 0.065
+    \end{aligned}
+\end{equation*}
+
+Sólo falta calcular $P(F)$ que es la probabilidad de que en una caja del envío haya exactamente 6 esferas. Pero como el envío puede ser tanto de Victor como de Héctor, entonces es equivalente a decir que esa probabilidad es la probabilidad de que en una caja de Hécto haya exactamente 6 esferas o en una caja de Victor haya exactamente 6 esferas, es decir, definiendo el evento \textit{FH: "En una caja de Héctor hay exactamente 6 esferas"}, dicha probabilidad se calcula
+
+\begin{equation}
+    P(F) = P(FV) + P(FH)
+\end{equation}
+
+$\therefore P(FH) = P(H \cap F)$ es la probabilidad de que Héctor guarde exactamente 6 esferas en una caja. Ya que el espacio es equiprobable porque cada uno elige al azar una caja para cada una de las esferas puedo calcular dicha probabilidad usando Laplace tal que
+
+\begin{equation}
+    P(FH) = \frac{\#FH}{\#\Omega_{H}}
+\end{equation}
+
+$\therefore \#\Omega_{H}$ es el cardinal del espacio muestral equiprobable para el experimento aleatorio: "Coloco 7 esferas en 4 cajas al azar".
+
+\begin{equation*}
+    \Omega_{H} = \{(x, y, z, t): x, y, z, t \in \{1, 2, 3, 4, 5, 6, 7\}, x + y + z + t = 7\}
+\end{equation*}
+
+Para calcular $\#\Omega_{H}$, como se colocan al azar, cada esfera tiene 4 cajas para ser guardadas, entonces
+
+\begin{equation*}
+    \begin{aligned}
+        \#\Omega_{H} &= 4 \cdot 4 \cdot 4 \cdot 4 \cdot 4 \cdot 4 \cdot 4\\
+                     &= 4^{7}\\
+                     &= 16384
+    \end{aligned}
+\end{equation*}
+
+y para calcular $\#FH$ tomo 6 de las 7 esferas y las coloco en una de las 4 cajas al azar, para la esfera restante elijo una caja al azar, luego
+
+\begin{equation*}
+    \begin{aligned}
+        \#FH &= \binom{7}{6} \cdot 3 \cdot 4\\
+             &= \binom{7}{6} \cdot 12
+             &= 28
+    \end{aligned}
+\end{equation*}
+
+Reemplazando en (4)
+
+\begin{equation*}
+    \begin{aligned}
+        P(FH) &= \frac{\#FH}{\#\Omega_{H}}\\
+              &= \frac{\binom{7}{6} \cdot 12}{4^{7}}\\
+              &\approx 0.005
+    \end{aligned}
+\end{equation*}
+
+Reemplazando en (3)
+
+\begin{equation*}
+    \begin{aligned}
+        P(F) &= P(FV) + P(FH)\\
+             &= \frac{\binom{10}{6} \cdot 3^{4} \cdot 4}{4^{10}} + \frac{\binom{7}{6} \cdot 12}{4^{7}}\\
+             &\approx 0.07
+    \end{aligned}
+\end{equation*}
+
+Ahora tengo todos los datos para calcular (1)
+
+\begin{equation*}
+    \begin{aligned}
+        P(V|F) &= \frac{P(V \cap F)}{P(F)}\\
+               &= \frac{P(FV)}{P(FV) + P(FH)}\\
+               &= \frac{\frac{\binom{10}{6} \cdot 3^{4} \cdot 4}{4^{10}}}{\frac{\binom{10}{6} \cdot 3^{4} \cdot 4}{4^{10}} + \frac{\binom{7}{6} \cdot 12}{4^{7}}}\\
+               &\approx 0.9268\\
+    \end{aligned}
+\end{equation*}
+
+\subsection*{Respuesta}
+
+\begin{equation*}
+    \boxed{P(V|F) \approx 0.9268}
+\end{equation*}
+
+\end{document}
