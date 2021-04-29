@@ -1,0 +1,267 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{enumerate}
+    \item Defino mi variable aleatoria
+    \begin{center}
+        X: "Cantidad de libros mal ubicados por dia"
+    \end{center}
+    Tiene distribucion de Poisson (ver tabla)
+    \begin{equation*}
+        X \sim Poi(\mu)
+        \quad R_{X} = \mathbb{N}_{0}
+    \end{equation*}
+    cuya funcion de probabilidad es
+    \begin{equation*}
+        p_{X}(x) = \frac{\mu^{x}e^{-\mu}}{x!}
+        \quad x = 0, 1, \dots
+    \end{equation*}
+    \begin{enumerate}[label=(\alph*)]
+        \item 
+            \begin{equation*}
+                \begin{aligned}
+                    P(X /geq 1) &= 1 - P(X = 0)\\
+                                &= 1 - \frac{1^{0}}{0!} \cdot e^{-1}\\
+                                &= 1 - e^{-1}\\
+                                &= 0.6321 
+                \end{aligned}
+            \end{equation*}
+        \item 
+        \begin{equation*}
+            \begin{aligned}
+                P(X = 3) &= \frac{1^{3}}{3!} \cdot e^{-1}\\
+                         &= 0.0613
+            \end{aligned}
+        \end{equation*}
+        \item (BONUS) Si se sabe que hubo mas de 2 libros mal ubicados, cual es la probabilidad de que haya mas de 4 mal ubicados? 
+        \begin{equation*}
+            \begin{aligned}
+                P(X < 4|X > 2) &= \frac{P(X < 4, X > 2)}{P(X > 2)}\\
+                               &= \frac{P(X = 3)}{1 - P(X = 0) - P(X = 1) - P (X = 2)}\\
+                               &= \frac{\frac{e^{-1}}{3!}}{1 - e^{-1} - e^{-1} - \frac{e^{-1}}{2!}}\\
+                               &= 0.7635
+            \end{aligned}
+        \end{equation*}
+    \end{enumerate}
+    \item Defino mi variable aleatoria
+    \begin{center}
+        T: "Tiempo que se mantiene adherida la etiqueda".
+    \end{center}
+    Tenemos que la tasa con respecto al tiempo
+    \begin{equation*}
+        \lambda(t) = \frac{1}{\sqrt{t}} \cdot \mathbb{1}\{t>0\}
+    \end{equation*}
+    a partir de ella podemos encontrar la funcion de distribucion. En este caso es la funcion de riesgo
+    \begin{equation*}
+        \begin{aligned}
+            F_{T}(t) &= 1 - e^{-\int_{0}^{t}\lambda(t) ds}\\
+                    &= \left\{
+                        \begin{aligned}
+                            &0 &t \leq 0\\
+                            &1 - e^{-\int_{0}^{t}s^{-\frac{1}{2}} ds} &t > 0
+                        \end{aligned}
+                       \right.\\
+                    &= \left\{
+                        \begin{aligned}
+                            &0 &t \leq 0\\
+                            &1 - e^{-2\sqrt{t}} &t > 0
+                        \end{aligned}
+                       \right.\\
+        \end{aligned}
+    \end{equation*}
+    Ahora que tengo la funcion de distribucion, me piden una probabilidad condicional, el primer anio estuvo adherida entonces
+    \begin{equation*}
+        \begin{aligned}
+            P(T \geq 2|T > 1) &= \frac{P(T \geq 2, T > 1)}{P(T > 1)}\\
+                              &= \frac{T \geq 2}{P(T > 1)}\\
+                              &= \frac{1 - F_{T}(2)}{1 - F_{T}(1)}\\
+                              &= \frac{e^{-2\sqrt{2}}}{e^{-2}}\\
+                              &= 0.4367
+        \end{aligned}
+    \end{equation*}
+    \begin{equation*}
+        \underbrace{\overline{P(T > t)}}_{\text{Supervivencia}} = 1 - F_{T}(t)
+    \end{equation*}
+    \item Tengo que
+    \begin{equation*}
+        Z \sim \mathcal{N}(0, 1)
+        \quad \text{(normal estandar)}
+    \end{equation*}
+    \begin{equation*}
+        f_{Z}(z) = \frac{1}{\sqrt{2\pi}} \cdot e^{-\frac{z^{2}}{2}}
+    \end{equation*}
+    \begin{center}
+        \subfile{../diagrams/distribucion_normal_explicacion.tex}
+    \end{center}
+    \begin{equation*}
+        F_{Z}(z) = \Phi(z)
+    \end{equation*}
+    \begin{enumerate}[label=(\alph*)]
+        \item 
+        \begin{enumerate}
+            \item 
+            \begin{equation*}
+                \begin{aligned}
+                    P(Z < 1) &= F_{Z}(1)\\
+                            &= \Phi(1)\\
+                            &= 0.8413
+                \end{aligned}
+            \end{equation*}
+            \item 
+            \begin{equation*}
+                \begin{aligned}
+                    P(Z > 1) &= 1 - F_{Z}(1)\\
+                            &= 0.1587
+                \end{aligned}
+            \end{equation*}
+            \item 
+            \begin{equation*}
+                \begin{aligned}
+                    P(-1.5 < Z < 0.5) &= \Phi{(0.5)} - \Phi{(-1.5)}\\
+                                    &= 0.6247
+                \end{aligned}
+            \end{equation*}
+            \item 
+            \begin{equation*}
+                \begin{aligned}
+                    P(-1.5 < Z < 0.5) &= \Phi{(0.5)} - \Phi{(-1.5)} \therefore \Phi{(-1.5)} = 1 - \Phi{(1.5)}\\
+                                    &= 0.6247
+                \end{aligned}
+            \end{equation*}
+        \end{enumerate}
+        \item Estoy buscando
+        \begin{equation*}
+            a: P(Z > a) = 0.95
+        \end{equation*}
+        Que es lo mismo que decir 
+        \begin{equation*}
+            \Phi{(a)} = 0.05
+        \end{equation*}
+        Nuestro $a$ corresponde a un numero negativo, ya que para cubrir la probabilidad que cubre, debe hacerlo desde los negativos. Ahora calculo $a$
+        \begin{equation*}
+            \begin{aligned}
+                a &= \Phi^{-1}{(0.05)}\\
+                  &= -1.6449
+            \end{aligned}
+        \end{equation*}
+    \end{enumerate}
+    \item Definimos la $V.A.$
+    \begin{center}
+        P: "Cantidad (en toneladas) del producto utilizada en un dia"
+    \end{center}
+    Sabemos que P tiene una distribucion exponencial con paramtro 0.25
+    \begin{equation*}
+        P \sim \mathcal{E}(0.25)
+    \end{equation*}
+    Cuya funcion de distribucion es
+    \begin{equation*}
+        f_P(p) = 
+            \left\{
+                \begin{aligned}
+                    &0.25 \cdot e^{-0.25p} &t > 0\\
+                    &0 &t \leq 0
+                \end{aligned}
+            \right.
+    \end{equation*}
+    \begin{center}
+        \begin{tikzpicture}
+            \begin{axis}[
+              scale only axis,
+              axis x line=middle,
+              axis y line=middle,
+              inner axis line style={=>},
+              % width=15cm,height=6cm,
+              ymin=0,ymax=1,
+              xmin=0,xmax=5,
+              axis line style = thick,
+              ticks =none,
+              every axis x label/.style={at={(current axis.right of origin)},anchor=west},
+              % every axis y label/.style={at={(current axis.left of axis.north)},above=0.5mm},
+              xlabel={$x$},
+              ylabel={$f_{X}(x)$}
+            ]
+            %Below the red parabola is defined
+            \addplot [
+                domain=0:10, 
+                samples=100, 
+                color=cyan,
+            ]
+            {exp(-x)};
+            \addlegendentry{$\lambda{e^{-\lambda{x}}}$}
+            
+            \end{axis}
+        \end{tikzpicture}
+    \end{center}
+    Luego
+    \begin{equation*}
+        F_{P}(p) =
+            \left\{
+                \begin{aligned}
+                    &0 &p < 0\\
+                    &1 - e^{-0.25p} &p \geq 0
+                \end{aligned}
+            \right.
+    \end{equation*}
+    Por ultimo, si $p > 0$, $P(P > p) = e^{-0.25}$
+    \begin{enumerate}
+        \item 
+        \begin{equation*}
+            \begin{aligned}
+                P(T > 4) &= 1 - F_T(4)\\
+                         &= e^{-\frac{1}{4}\cdot 4}\\
+                         &= e^{-1}
+            \end{aligned}
+        \end{equation*}
+        \item 
+        \begin{equation*}
+            P(\underbrace{\text{"Agotar existencia"}}_{T \geq a}) = 0.05
+        \end{equation*}
+        Me piden $a> P(T \geq a) = 0.05$, es decir $e^{-\frac{a}{4}} = 0.05$ por lo tanto
+        \begin{equation*}
+            \begin{aligned}
+                a &= -4\ln(0.05)\\
+                    &= 11.98
+            \end{aligned}
+        \end{equation*}
+    \end{enumerate}
+    \item Definimos la variable aleatoria
+    \begin{center}
+        X: "tiempo de reabastecimiento en dias"
+    \end{center}
+    y me dan la funcion de densidad
+    \begin{equation*}
+        f_{X}(x) = \frac{(0.1)^{4}}{3!} \cdot x^{3}e^{-\frac{x}{10}} \cdot \mathbb{1}\{x > 0\} 
+    \end{equation*}
+    \begin{enumerate}[label=(\alph*)]
+        \item 
+        \begin{equation*}
+            P(X < 20) = \int_{0}^{20} \frac{(0.1)^{4}}{3!} \cdot x^{3}e^{-\frac{x}{10}} dx
+        \end{equation*} 
+        Veo que la funcion de densidad se parece a la funcion de distribucion de Gamma
+        \begin{equation*}
+            f_X(x) = \frac{\lambda^{k}}{\Gamma}(k) \cdot x^{k-1} \cdot e^{-\lambda{x}}
+        \end{equation*}
+        Si fuera Gamma $k = 4$ y $\lambda = \frac{1}{10}$. Verifico que cumple, entonces
+        \begin{equation*}
+            \therefore X \sim \Gamma(4, \frac{1}{10})
+        \end{equation*}
+        Usando la Supervivencia de Gamma
+        \begin{equation*}
+            \Gamma(a) = (a - 1) \cdot \Gamma(a - 1)
+        \end{equation*}
+        Entonces 
+        \begin{equation*}
+            \begin{aligned}
+                P(X < 20) &= 1 - P(X > 20)\\
+                          &= 1 - \sum_{i=0}^{3} \frac{2^{i}}{i!} \cdot e^{-2}\\
+                          &= 0.1429
+            \end{aligned}
+        \end{equation*}
+        \item s
+        \begin{equation*}
+            \begin{aligned}
+                P(X < 60) &= 1 - P(X > 60)\\
+                          &= 1 -  
+            \end{aligned}
+        \end{equation*}
+    \end{enumerate}
+\end{enumerate}
