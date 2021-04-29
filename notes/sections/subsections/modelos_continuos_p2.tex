@@ -1,0 +1,191 @@
+\documentclass[../../main.tex]{subfiles}
+
+\begin{definition}[Distribucion Uniforme]
+    Supongamos que $X$ es una $V.A.C$ que toma todos los valores sobre el intervalo $[a, b]$. Si $f_{X}(x)$ esta dada por
+    
+    \begin{equation*}
+        f_X(x) = 
+        \left\{
+            \begin{aligned}
+                &k = \frac{1}{b-a} \text{ si }a < x < b\\
+                &0 \text{ e.o.c}
+            \end{aligned}
+        \right.
+    \end{equation*}
+    
+    Estamos hablando de una variable continua por lo tanto tiene funcion de densidad y se llama uniforme. Cuando hablamos de una variable uniforme lo que estamos diciendo es que su funcion de densidad va a ser constante sobre el intervalo $[a, b]$ y 0 en otros casos, de manera que todos los valores que se encuentren en el intervalo tienen la misma probabilidad de ocurrir. Si graficamos
+    
+    \begin{center}
+        \subfile{../../diagrams/distribucion_uniforme_explicacion.tex}
+    \end{center}
+    
+    Entonces, para que sea una funcion de densidad
+    
+    \begin{enumerate}
+        \item $k > 0$
+        \item $\int_{-\infty}^{\infty}f_X(x) dx = 1$
+    \end{enumerate}
+    
+    Se dice que la varaibla aleatoria X tiene disstribucion uniforme de paramteros a y b
+    
+    \begin{equation*}
+        X \thicksim \mathcal{U}(a, b)
+    \end{equation*}
+    
+    Esta distribucion nos debe venir a la cabeza cuando se hable de elegir un punto al azar sobre un continuo.
+\end{definition}
+
+
+\begin{defexample}
+    Una vara de longitud $10m$ se corta en un punto elegido al azar. Calcular la probabilidad de que la pueza mas corta mida menos de $3m$.
+
+    Solución: lo primero que vamos a hacer es identificar y definir a nuestra variable aleatoria. Identificando que lo aleatorio en mi experimento es el corte de barra, mi variable aleatoria es el punto en el que se corta la barra
+    \begin{center}
+        X: "punto den el que se corta la vara".
+    \end{center}
+    Estamos eligiendo al azar en un continuo, entonces nuestra variable aleatoria tiene una distribucion continua en un intervalor dado
+    \begin{equation*}
+        X \thicksim \mathcal{U}(0, 10)
+    \end{equation*}
+    Luego
+    \begin{equation*}
+        P(\text{"Pieza mas corta mida menos de 3m})
+    \end{equation*}
+    \begin{equation*}
+        P(\underbrace{(X < 3, X < 5)}_{X<3} \cup \underbrace{(10-X < 3, X > 5)}_{X>7})
+    \end{equation*}
+    \begin{center}
+        \subfile{../../diagrams/distribucion_uniforme_ejemplo.tex}
+    \end{center}
+    Nos quedaron areas de rectangulos entonces
+    \begin{equation*}
+        \begin{aligned}
+            P(X <3, X>7) &= \frac{3}{10} + \frac{3}{10}\\
+                         &= \frac{6}{10}
+        \end{aligned}
+    \end{equation*}
+\end{defexample}
+
+\begin{definition}[Distribucion Exponencial]
+    Una variable aleatoria tiene distribucion exponencial de parametro $\lambda > 0$ si su funcion de densidad esta dada por
+    \begin{equation*}
+        f_X(x) = 
+        \left\{
+            \begin{aligned}
+                &\lambda e^{-\lambda x} \text{ si }a < x < b\\
+                &0 \text{ e.o.c}
+            \end{aligned}
+        \right.
+    \end{equation*}
+
+    \begin{center}
+        AGREGAR GRAFICO
+    \end{center}
+
+    \begin{equation*}
+        \begin{aligned}
+            \int_{-\infty}^{\infty}f_X(x) dx &= \int_{0}^{\infty} \lambda e^{-\lambda x} dx\\
+                                             &= -e^{-\lambda x}\Biggr|_{0}^{\infty}\\
+                                             &= 1
+        \end{aligned}
+        \text{siempre que } \lambda > 0, \lambda e^{-\lambda x}>0
+    \end{equation*}
+\end{definition}
+
+Calculando su funcion de distribucion
+
+\begin{equation*}
+    F_X(x) = P(X \leq x) =
+    \left\{
+        \begin{aligned}
+            &0 &x < 0\\
+            &\int_{0}^{x} \lambda e^{-\lambda t} dt = 1 - e^{-\lambda t} &x\geq 0
+        \end{aligned}
+    \right.
+\end{equation*}
+
+Entonces, i $x<0$
+
+\begin{equation*}
+    P(X>x) = 1 - F_{X}(x = e^{-\lambda x})
+\end{equation*}
+
+\begin{properties}
+    \begin{enumerate}
+        \item Si $X \sim \mathcal{E}(\lambda)$ entonces $P(X>t+s, X>t) = P(X > s)$, $\forall t, s \in \mathbb{R}^{+}$
+        \begin{proof}
+            \begin{equation*}
+                \begin{aligned}
+                    P(X>t+s|X>t) &= \frac{P(X>t+s, X>t)}{P(X>t)}\\
+                                 &= \frac{e^{-\lambda (t+s)}}{e^{-\lambda t}}\\
+                                 &= e^{-\lambda s}\\
+                                 &= P(X>s)
+                \end{aligned}
+            \end{equation*}
+        \end{proof}
+        \textbf{Ejemplo}\\
+        Supongamos que X es la duracion de una lampara de bajo consumo, entonces, la ecuacion anterior expresaria, que probabilidad hay de que mi lampara dure 8 horas si ya se que duro 4 horas. Y desarrollando llegamos a que esa expresion es equivalente a decir que probabilidad hay de que mi lampara dure mas de 4 horas. Esta propiedad se llama perdida de memoria.
+        \item Si $X$ es una $V.A.C$ y $P(X>t+s|X>t) = P(X>s)$, $\forall t, s \in \mathbb{R}^{+}$ entonces existe $\lambda > 0$ tal que $X \sim \mathcal{E}(\lambda)$. En otras palabras, si $X$ es continua y tiene perdida de memoria entonces $X$ es una distribucion exponencial
+    \end{enumerate}
+\end{properties}
+
+\begin{definition}[Funcion de Riesgo (para una $V.A.C$)]
+    Pregunta: Dado que un compente duro un cierto tiempo $t$, cual es la probabilidad de que se rompa un instante despues?
+    \begin{center}
+        T: "Tiempo hasta que el componente falla"
+    \end{center}
+    \begin{equation*}
+        P(T<t+\Delta{t}|T>t)
+    \end{equation*}
+    Esta probabilidad se puede pensar como una funcion de $t$ a la que vamos a llamar funcion intensidad de fallas multiplicado por un intervalo $\Delta{t}$
+    \begin{equation*}
+        \begin{aligned}
+            \lambda(t) &= \lim_{\Delta{t}\rightarrow0} \frac{P(T<t+\Delta{t}|T>t)}{\Delta{t}}\\
+                       &= \lim_{\Delta{t}\rightarrow0} \frac{P(t < T < t+\Delta{t})}{\Delta{t} \cdot P(T>t)}\\
+                       &= \lim_{\Delta{t}\rightarrow0} \frac{F_T(t + \Delta{t}) - F_T(t)}{\Delta{t} \cdot (1 - F_T(t))}\\
+                       &= \frac{f_T(t)}{1 - F_T(t)}
+        \end{aligned}
+    \end{equation*}
+    Este ultimo cociente se parece  a la derivada del logaritmo. Porque la funcion de densidad es la derivada de la funcion de distribucion, entonces
+    \begin{equation*}
+        -\lambda(t) = \frac{\partial}{\partial{t}} \ln{1 - F_T(t)}
+    \end{equation*}
+    \begin{equation*}
+        -\int_{0}^{t}\lambda(t) ds= \ln{1 - F_T(t)}
+    \end{equation*}
+    \begin{equation*}
+        F_{T}(t) = 1 - e^{-\int_{0}^{t}\lambda(t) ds}
+    \end{equation*}
+\end{definition}
+Cuando nos den la funcion intensidad de falla vamos a poder encontrar la funcion de distribucion de nuestra variable aleatoria que en general va a medir un tiempo hasta un evento, usando la formula a la que acabamos de lllegar, y con esa funcion de distribucion podemos calcular cualquier cosa que nos pidan.
+
+\begin{definition}[Distribucion Gamma]
+    Se dice que una variable aleatoria tiene distribucion Gamma de parametros $\lambda$ y $k$ si su funcion de densidad es 
+    \begin{equation*}
+        f_X(x) = \frac{\lambda^{k}}{\Gamma}(k) \cdot x^{k-1} \cdot e^{-\lambda{x}}
+    \end{equation*}
+\end{definition}
+
+\begin{definition}[Distribucion Normal Estandar]
+    La $V.A.$ $X$ que toma los valores de $-\infty < x < \infty$ tiene una distribucion normal estandar si su funcion de densidad es de la forma
+    \begin{equation*}
+        f_{X}(x) = \frac{1}{\sqrt{2\pi}} \cdot e^{-\frac{x^{2}}{2}}
+    \end{equation*}
+    \begin{center}
+        \subfile{../../diagrams/distribucion_normal_explicacion.tex}
+    \end{center}
+    Su probabilidad se calcula
+    \begin{equation*}
+        \Phi(x) = F_{X}(x) = P(X \leq x) = \int_{-\infty}^{x} \frac{1}{\sqrt{2\pi}} \cdot e^{-\frac{t^{2}}{2}} dt
+    \end{equation*}
+\end{definition}
+
+\begin{definition}[Cuantil]
+    Definimos al cuantil $\alpha$ como el minimo valor de $x \in \mathbb{R}$ tal que la funcioin de distribucion de $x$ sea mayor o igual a $\alpha$.
+    Busco $x_{\alpha}: P(X \leq x_\alpha) = \alpha$.
+
+    En general
+    \begin{equation*}
+        x_{\alpha} = min\{x \in \mathbb{R}: F_X(x) \geq \alpha\}
+    \end{equation*}
+\end{definition}
