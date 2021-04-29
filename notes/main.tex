@@ -64,6 +64,34 @@
 \newcommand{\eqdownarrowx}[2][1]{\stackrel{\mathclap{#2}}{\eqdownarrow[#1]}}
 
 \usetikzlibrary{trees}
+\usepackage{tkz-euclide}
+\usepackage{pgfplots}
+
+% arrow and line for 'tkzPointShowCoord'
+\makeatletter
+\tikzset{arrow coord style/.style={%
+    densely dashed,
+    \tkz@euc@linecolor,
+    %>=stealth',
+    %->,
+    }}
+    \tikzset{xcoord style/.style={%
+    \tkz@euc@labelcolor,
+    font=\normalsize,text height=1ex,
+    inner sep = 0pt,
+    outer sep = 0pt,
+    fill=\tkz@fillcolor,
+    below=6pt
+    }} 
+\tikzset{ycoord style/.style={%
+    \tkz@euc@labelcolor,
+    font=\normalsize,text height=1ex, 
+    inner sep = 0pt,
+    outer sep = 0pt, 
+    fill=\tkz@fillcolor,
+    left=6pt
+    }}  
+\makeatother
 
 %opening
 \title{Notas de Probabilidad y Estadística}
@@ -81,7 +109,11 @@
 \clearpage
 
 \section{Probabilidad}
-\subfile{sections/capitulo_1}
+\subfile{sections/capitulo_1.tex}
+\clearpage
+
+\section{Distribucion}
+\subfile{sections/capitulo_2.tex}
 \clearpage
 
 % \section{Clase 13-04}
