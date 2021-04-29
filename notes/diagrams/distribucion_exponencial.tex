@@ -1,0 +1,30 @@
+\documentclass[../sections/subsections/modelos_continuos_p2.tex]{subfiles}
+
+\begin{tikzpicture}
+  \begin{axis}[
+    scale only axis,
+    axis x line=middle,
+    axis y line=middle,
+    inner axis line style={=>},
+    % width=15cm,height=6cm,
+    ymin=0,ymax=1,
+    xmin=0,xmax=5,
+    axis line style = thick,
+    ticks =none,
+    every axis x label/.style={at={(current axis.right of origin)},anchor=west},
+    % every axis y label/.style={at={(current axis.left of axis.north)},above=0.5mm},
+    xlabel={$x$},
+    ylabel={$f_{X}(x)$}
+  ]
+  %Below the red parabola is defined
+  \addplot [
+      domain=0:10, 
+      samples=100, 
+      color=cyan,
+  ]
+  {exp(-x)};
+  \addlegendentry{$\lambda{e^{-\lambda{x}}}$}
+  %Here the blue parabloa is defined
+  
+  \end{axis}
+  \end{tikzpicture}
