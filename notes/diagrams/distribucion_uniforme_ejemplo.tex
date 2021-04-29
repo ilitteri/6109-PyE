@@ -1,0 +1,27 @@
+\documentclass[../sections/subsections/modelos_continuos_p2.tex]{subfiles}
+
+
+\begin{tikzpicture}
+\tkzInit[xmax=1.5,xstep=0.2,ymax=1,ystep=0.2]
+\tkzDrawX[noticks,label={$x$}]
+\tkzDrawY[noticks,label={$f_X(x)$}]
+\tkzDefPoint(0,0.4){A}
+\tkzDefPoint(1,0.4){B}
+\tkzDefPoint(0.3,0.4){C}
+\tkzDefPoint(0.3,0){D}
+\tkzDefPoint(0.7,0.4){E}
+\tkzDefPoint(0.7,0){F}
+\tkzDefShiftPoint[A](-90:2){AB}
+\tkzDefShiftPoint[B](-90:2){BB}
+\tkzDefShiftPoint[AB](0:-0.8){ABL}
+\tkzDefShiftPoint[BB](0:0.8){BBR}
+\tkzPointShowCoord[xlabel=$$,ylabel=$\frac{1}{10}$](A)
+\tkzPointShowCoord[xlabel=$10$](B)
+\tkzPointShowCoord[xlabel=$3$](C)
+\tkzPointShowCoord[xlabel=$7$](E)
+\tkzDrawSegments[color=green,thick](C,D)
+\tkzDrawSegments[color=green,thick](E,F)
+\tkzDrawSegments[color=cyan,thick](A,B AB,ABL BB,BBR)
+\tkzDrawPoints[color=cyan,fill=cyan,size=6pt](A,B)
+\tkzDrawPoints[color=cyan,fill=white,size=6pt](AB,BB)
+\end{tikzpicture}

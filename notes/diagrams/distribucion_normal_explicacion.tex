@@ -1,0 +1,24 @@
+\documentclass[../sections/subsections/modelos_continuos_p2.tex]{subfiles}
+
+\pgfmathdeclarefunction{gauss}{2}{%
+  \pgfmathparse{1/(#2*sqrt(2*pi))*exp(-((x-#1)^2)/(2*#2^2))+0.01}%
+  }
+\begin{tikzpicture}
+\begin{axis}[
+    scale only axis,
+    axis x line=middle,
+    axis y line=middle,
+    inner axis line style={=>},
+    width=15cm,height=6cm,
+    ymin=0,ymax=0.45,
+    xmin=-3.5,xmax=3.5,
+    axis line style = thick,
+    ticks =none,
+    every axis x label/.style={at={(current axis.right of origin)},anchor=west},
+    every axis y label/.style={at={(current axis.north)},above=0.5mm},
+    xlabel={$x$},
+    ylabel={$f_{X}(x)$}
+]
+\addplot [domain=-3.5:3.5,samples=500,cyan,thick] {gauss(0,1)};
+\end{axis}
+\end{tikzpicture}
