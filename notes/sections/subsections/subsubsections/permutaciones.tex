@@ -1,0 +1,19 @@
+\documentclass[../../../main.tex]{subfiles}
+
+\begin{definition}[Permutaciones]
+    La cantidad de formas distintas en las que puedo ordenar n elementos es n!
+\end{definition}
+
+\begin{defexamples} Permutaciones
+    \begin{enumerate}
+        \item ¿De cuántas formas distintas puedo fotografiar a 7 personas en hilera?
+            \begin{equation*}
+                \#CP = \underline{7}\cdot\underline{6}\cdot\underline{5}\cdot\underline{4}\cdot\underline{3}\cdot\underline{2}\cdot\underline{1} = 7!
+            \end{equation*}
+        \item ¿Que pasaría si en una biblioteca tengo espacio para 3 libros y yo tengo 5?\\
+        5! son todas las permutaciones de los elementos que tenía originalmente, y hay que dividir por los que conté de más cuando ubiqué a todos. En este caso calculo las permutaciones y luego les divido lo que conté de más, entonces:
+            \begin{equation*}
+                \#CP = \underline{5}\cdot\underline{4}\cdot\underline{3} = 60 = \frac{5\cdot4\cdot3\cdot2\cdot1}{2\cdot1} = \frac{5!}{2!}
+            \end{equation*}
+    \end{enumerate}
+\end{defexamples}
