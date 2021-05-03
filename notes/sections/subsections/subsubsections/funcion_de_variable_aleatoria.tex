@@ -1,0 +1,131 @@
+\documentclass[../../../main.tex]{subfiles}
+
+\begin{definition}[Funcion de Variable Aleatoria]
+    Sea
+    \begin{equation*}
+        Y = g(x),
+    \end{equation*}
+    si $X$ es una $V.A.D.$, $Y$ sera discreta, con
+    \begin{equation*}
+        p_{Y}(y) = P(Y = y) = \sum_{x \in B} p_{X}(x)
+    \end{equation*}
+    \begin{equation*}
+        \therefore B = \{x \in \mathbb{R}: g(x) = t\}
+    \end{equation*}
+\end{definition}
+
+\begin{defexample}
+    Tiro un dado equilibrado, si sale 1, gano 10 pesos, sino pierdo 1 peso. Hallar la funcion de probabilidad de la ganancia.
+    Ya conozco la variable aleatoria de este ejemplo y su funcion de probabilidad
+    \begin{center}
+        X: "Valor observado al arrojar el dado"
+    \end{center}
+    \begin{equation*}
+        p_{X} = \frac{1}{6}, x = 1, 2, 3, 4, 5, 6
+    \end{equation*}
+    Ahora tengo que definir una nueva variable aleatoria discreta
+    \begin{center}
+        G: "Ganancia"
+    \end{center}
+    que va a poder tomar los valores
+    \begin{equation*}
+        R_{G} = \{-1, 10\}
+    \end{equation*}
+    con probabilidad de ganar 10 siendo
+    \begin{equation*}
+        P(G = 10) = P(X = 1) = \frac{1}{6}
+    \end{equation*}
+    y probabilidad de no hacerlo es la suma de todos los $X$ desde 2 hasta 6
+    \begin{equation*}
+        P(G = -1) = \sum_{X = 2}^{6} p_{X}(x) = \frac{5}{6}
+    \end{equation*}
+\end{defexample}
+
+En general, si $Y = g(x)$ luego
+\begin{equation*}
+    F_{Y}(y) = P(Y \leq y) = P(g(X) \leq y)
+\end{equation*}
+y calculo esa probabilidad $\forall{y} \in \mathbb{R}$
+
+\begin{defexamples}
+    \begin{enumerate}
+        \item Sea $X \sim \mathcal{E}(1)$. Probar que $Y = \frac{X}{\lambda} \sim \mathcal{E}(\lambda)$, $\lambda > 0$.
+        Desarrollando
+        \begin{equation*}
+            \begin{aligned}
+                F_{Y}(y) &= P(Y \leq y)\\
+                         &= P(\frac{X}{\lambda} \leq y)\\
+                         &=P(X \leq \lambda{y})\\
+                         &= F_{X}(\lambda{y})
+            \end{aligned}
+        \end{equation*}
+        en donde $y \in \mathbb{R}$ y la funcion de distribucion de una exponencial es
+        \begin{equation*}
+            F_{X}(x) =
+            \left\{
+                \begin{aligned}
+                    &1-e^{-x} &x \geq 0\\
+                    &0 & e.o.c.
+                \end{aligned}
+            \right.
+        \end{equation*}
+        Luego
+        \begin{equation*}
+            \begin{aligned}
+                F_{Y}(y) &= F_{X}(\lambda{y})\\
+                         &=
+                          \left\{
+                            \begin{aligned}
+                                &1-e^{-\lambda{y}} &y \geq 0\\
+                                &0 & e.o.c.
+                            \end{aligned}
+                          \right.
+            \end{aligned}
+        \end{equation*}
+    \end{enumerate}
+    que es nada mas ni nada menos que la funcion de distribucion de una variable exponencial de parametro $\lambda$.
+    \begin{equation*}
+        Y \sim \mathcal{E}(\lambda)
+    \end{equation*}
+    \item Sea $Z$ una $V.A.$ con distribucion normal estandar, y sea $X = Z^{2}$. Encontrar la distribucion de $X$.
+    Cuando se pide buscar la distribucion, no se refiere a buscar la funcion de distribucion, sino que se pide como se distribuye esta nueva variable, es decir, se pide que se defina la variable, que busquemos la medida de la probabilidad y que busquemos en la tabla si tiene algun nombre conocido.
+    \begin{equation*}
+        \begin{aligned}
+            F_{X}(x) &= P(X \leq x)\\
+                     &= P(Z^{2} \leq x)\\
+                     &=
+                        \left\{
+                            \begin{aligned}
+                                &0 &x < 0\\
+                                &P(|Z|) \leq \sqrt{x} & x \geq 0
+                            \end{aligned}
+                        \right.
+        \end{aligned}
+    \end{equation*}
+    Vamos adibujar la campana y entender que probabilidad me estan pidiendo. Si la variable es $x < 0$, entonces la probabilidad vale 0, ya que cualquier numero elvado al cuadrado devuelve un numero positivo. Si $x \geq 0$ tengo que despejar $Z$, en este caso corresponde a la probabilidad de que el modulo de $Z$ sea menor o igual a la raiz de $x$. Esto significa que quiero calcular la probabilidad de que $Z$ este entre $-\sqrt{x}$ y $\sqrt{x}$, que para ello debemos evaluar la funcion $\Phi$ en $-\sqrt{x}$ y $\sqrt{x}$. Por lo tanto para cada $x > 0$ tengo que ir a la tabla de la distribucion normal y calcular la probabilidad con ella.
+    \begin{equation*}
+        \begin{aligned}
+            P(|Z| \leq \sqrt{x}) &= P(-\sqrt{x} \leq Z \leq \sqrt{x})\\
+                                 &= \Phi(\sqrt{x}) - \Phi(-\sqrt{x})
+        \end{aligned}
+    \end{equation*}
+    Observamos que $F_{X}(x)$ es continua $\forall{x} \in \mathbb{R}$, por lo tanto, $X$ es una $V.A.C.$. Podemos buscar su funcion de densidad y ver si se parece a alguna de la tabla
+    \begin{equation*}
+        \begin{aligned}
+            f_{X}(x) &= \frac{\partial}{\partial{x}} F_{X}(x)\\
+                     &=
+                        \begin{aligned}
+                            &0 &x < 0\\
+                            &\phi(\sqrt{x}) \cdot \frac{1}{2\sqrt{2}} - \phi(-\sqrt{x}) \cdot \frac{1}{2\sqrt{x}} &x \geq 0
+                        \end{aligned}
+        \end{aligned}
+    \end{equation*}
+    Reemplazamos con $\phi(t) = \frac{1}{\sqrt{2\pi}} \cdot e^{-\frac{t}{2}}$. Y evaluando nuestro resultado
+    \begin{equation*}
+        f_{X}(x) = \frac{1}{\sqrt{x}} \cdot \frac{1}{\sqrt{2\pi}} \cdot e^{-\frac{x}{2}} \cdot \mathbb{1}\{x \geq 0\}
+    \end{equation*}
+    Ahora viendo en la tabla nos damos cuenta que esta se parece a una ditribucion Gamma
+    \begin{equation*}
+        X \sim \Gamma(\frac{1}{2}, \frac{1}{2})
+    \end{equation*}
+\end{defexamples}
