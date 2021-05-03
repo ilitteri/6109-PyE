@@ -1,0 +1,26 @@
+\documentclass[../../../main.tex]{subfiles}
+
+\begin{definition}[Partición]
+    Decimos que los eventos $B_{1}, B_{2}, \dots, B_{k}$ forman una partición de $\Omega$ si 
+    \begin{enumerate}
+        \item $B_{i} \cap B_{j} = \O$, $\forall i \neq j$.
+        \item $\bigcup_{i=1}^{k} B_{i} = \Omega$
+    \end{enumerate}
+\end{definition}
+
+\begin{defexamples}
+    \begin{itemize}
+        \item Si tomo una sección de vidrio cuadrada y la rompo, el vidrio quedó particionado. Cada uno de los pedazos de vidrio es un $B_{j}$ de mi partición. La intersección es vacía, pero si los uno contruyo mi $\Omega$ es decir el vidrio completo.
+       \item Una pared formada por azulejos. Su intersección es nula, pero su unión es toda la pared. Si salpico salsa en la parted, veo una mancha distribuida en varios azulejos, es decir en parios pedazos de mi partición. Si la salsa es el conjuno $A$, lo voy a escribir como la unión de todos los azulejos en donde $A$ se interseca con cada $B_{i}$ es decir
+       \begin{equation*}
+           A = (A \cap B_{1}) \cup (A \cap B_{2}) \cup \dots \cup (A \cap B_{k})
+       \end{equation*}
+       Todos los eventos entre paréntesis son mutuamente exclutentes. Si quiero calcular $P(A)$ usando el axioma 3
+       \begin{equation*}
+           \begin{aligned}
+               P(A) &= P((A \cap B_{1}) \cup (A \cap B_{2}) \cup \dots \cup (A \cap B_{k}))\\
+                    &= P((A \cap B_{1})) + P((A \cap B_{2})) + \dots + P((A \cap B_{k}))
+           \end{aligned}
+       \end{equation*}
+    \end{itemize}
+\end{defexamples}
