@@ -1,0 +1,88 @@
+\documentclass[../../../main.tex]{subfiles}
+
+\begin{definition}[Funcion de Densidad de Probabilidad]
+    Se dice que $X$ es una $V.A.C.$ si existe una funcion $f_{X}: \mathbb{R} \rightarrow \mathbb{R}$, llamada \textbf{funcion de densidad de probabilidad}, que satisface las siguientes condiciones
+    \begin{enumerate}
+        \item $f_{X} \geq 0$, $\forall{x} \in \mathbb{R}$
+        \item $\int_{-\infty}^{\infty}f_{X}(x)dx = 1$
+        \item Para cualquier $a$ y $b$ tales que $-\infty < a < b < +\infty$ tenemos
+        \begin{equation*}
+            P(a < X < b) = \int_{a}^{b}f_{X}(x)dx
+        \end{equation*}
+    \end{enumerate}
+    \begin{center}
+        GRAFICO
+    \end{center}
+\end{definition}
+
+\begin{defexample}
+    La demanda de aceite pesado en cientos de litros durante una temporada tiene la siguiente funcion de densidad
+    \begin{equation*}
+        f_{X}(x) = \frac{4x + 1}{3} \cdot \mathbb{1}\{0<x<1\}
+    \end{equation*}
+    \begin{enumerate}
+        \item Graficar $f_{X}(x)$ y verificar que sea una funcion de densidad.
+        \item Hallar la funcion de distribucion de $X$.
+        \item Calcular $P(\frac{1}{3} < X \leq \frac{2}{3})$ y $P(\frac{1}{3} < X \leq \frac{2}{3}|X < \frac{1}{2})$
+    \end{enumerate}
+    \begin{enumerate}
+        \item 
+        \textbf{Paso 1:} Defino una variable aleatoria.
+        \begin{center}
+            X: "Demanda de aceite en cientos de litros".
+        \end{center}
+        \textbf{Paso 2:} Grafico y verifico si es de densidad
+        \begin{equation*}
+            f_{X}(x) = 
+            \left\{
+                \begin{aligned}
+                    &\frac{4x + 1}{3} &0<x<1\\
+                    &0 &e.o.c.
+                \end{aligned}
+            \right.
+        \end{equation*}
+        \begin{enumerate}
+            \item $f_{X} \geq 0$. SI
+            \item $\int_{-\infty}^{\infty}f_{X}(x)dx = 1$. SI (calculas la integral o calcular el area de la figura bajo la curva, en este caso, el area del trapecio).
+        \end{enumerate}
+        \item 
+        \begin{equation*}
+            \begin{aligned}
+                F_{X}(x) &= P(X \leq x)\\
+                         &= \int_{-\infty}^{x}f_{X}(t)dt\\
+                         &=
+                         \left\{
+                             \begin{aligned}
+                                &\int_{-\infty}^{x}0dx = 0 &x< 0\\
+                                &\int_{-\infty}^{0}0dx + \int_{0}^{x}\frac{4t + 1}{3}dt &0 \leq x < 1\\
+                                &1 &x\geq 1
+                             \end{aligned}
+                         \right.\\
+                         &= 
+                         \left\{
+                            \begin{aligned}
+                               &0 &x< 0\\
+                               &2x^{2} + x &0 \leq x < 1\\
+                               &1 &x\geq 1
+                            \end{aligned}
+                         \right.\\
+            \end{aligned}
+        \end{equation*}
+        Ahora graficamos la funcion de probabilidad para verificar si cumple con las condiciones.
+    \end{enumerate}
+\end{defexample}
+
+\begin{note}
+    Si $X$ es una $V.A.C.$, $F_{X}(x)$ es una funcion continua $\forall{x} \in \mathbb{R}$.
+\end{note}
+
+\begin{theorem}
+    Sea $F_{X}(x)$ la funcion de distribucion de una $V.A.C.$ (admite derivada), luego
+    \begin{equation*}
+        f_{X}(x) = \frac{\partial}{\partial{x}} F_{X}(x)
+    \end{equation*}
+\end{theorem}
+
+\begin{note}
+    La funcion de densidad solo existe para $V.A.C.$
+\end{note}
