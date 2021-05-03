@@ -1,0 +1,176 @@
+\documentclass[../../main.tex]{subfiles}
+
+Dado un $E.A.$ y un $\Omega$ el espacio muestral asociado a el, una funcion $X$ que asigna a cada uno de los elementos $\omega \in \Omega$ un numero real $X(w)$ se llama variable aleatoria.
+
+\begin{definition}[Variable Aleatoria]
+    Sea $(\Omega, \mathcal{A}, P)$ un espacio de probabilidad y $X: \Omega \rightarrow \mathbb{R}$ una funcion, diremos que $X$ es una variable aleatoria si $X^{-1}(B) \in \mathcal{A}$.
+\end{definition}
+
+\begin{proposition}
+    Sea $(\Omega, \mathcal{A}, P)$ un espacio de probabilidad y $X$ una $V.A.$ entonces $X^{-1}(B) \in \mathcal{A}$. Luego, se puede calcular la probabilidad, es decir
+    \begin{equation*}
+        P(X^{-1}(B)) = P(X \in B)
+    \end{equation*}
+\end{proposition}
+
+\begin{observation}
+    \begin{equation*}
+        X^{-1}(B) = \{\omega \in \Omega: X(\omega) \in B\}
+    \end{equation*}
+\end{observation}
+
+\begin{definition}[Funcion de Distribucion]
+    Sea $(\Omega, \mathcal{A}, P)$ un espacio de probabilidad y $X$ una $V.A.$, definimos su funcion de distribucion $F_{X}: \mathbb{R} \rightarrow [0, 1]$ dada por
+    \begin{equation*}
+        F_{X} = P(X \leq x), \forall{x} \in \mathbb{R}
+    \end{equation*}
+\end{definition}
+
+\begin{properties}
+    \begin{enumerate}
+        \item $F_{X}(x) \in [0, 1]$ $\forall{x} \in \mathbb{R}$.
+        \item $F_{X}(x)$ es monotona no decreciente.
+        \item $F_{X}(x)$ es continua a derecha.
+        \item $\lim_{x \rightarrow -\infty} F_{X}(x) = 0$ y $\lim_{x \rightarrow +\infty} F_{X}(x) = 1$
+    \end{enumerate}
+\end{properties}
+
+\begin{definition}[Variables Aleatorias Discretas]
+    Sea $(\Omega, \mathcal{A}, P)$ un espacio de probabilidad y $X$ una $V.A.$, diremos que $X$ es una $V.A.$ discreta cuando existe $A \in \mathbb{R}$ finito o infinito numerable tal que $p_{X}(A) = 1$ donde
+    \begin{equation*}
+        p_{X}(A) = P(X \in A)
+    \end{equation*}
+    Una $V.A.$ discreta es aquela cuyos valores posibles constituyen un conjunto finito o infinito numerable.\\
+    El rango de una $V.A.D.$ es
+    \begin{equation*}
+        R_{X} = \{x \in \mathbb{R}: p_{X} > 0\}
+    \end{equation*}
+    Notacion:
+    \begin{center}
+        $X$ (mayuscula) $\rightarrow$ $V.A.$\\
+        $x$ (minuscula) $\rightarrow$ resultados posibles de la $V.A.$
+    \end{center}
+\end{definition}
+
+\begin{definition}
+    Sea $X$ una $V.A.D.$, se llama funcion de probabilidad de $X$ a una funcion $p_(X): \mathbb{R} \rightarrow [0, 1]$ tal que $p_{X}(x) = P(X = x)$. Con cada resultado posible $x_{i}$ asociamos un numero $p_{X}(x_{i}) = P(X = x_{i})$ que debe cmumplir:
+    \begin{enumerate}
+        \item $p_{X}(x_{i}) \geq 0$ $\forall{i}$
+        \item $\sum_{x \in \mathbb{R}} p_{X}(x) = 1$
+    \end{enumerate}
+\end{definition}
+
+\begin{example*}
+    $E.A.$: tiro una moneda 2 veces y observo el resultado. Defino C: observo cara.
+    \begin{equation*}
+        \Omega = \{(C, C), (C, \overline{C}), (\overline{C}, C), (\overline{C}, \overline{C})\}
+    \end{equation*}
+    \begin{enumerate}
+        \item X: "Cantidad de caras observadas al tirar una moneda 2 veces".
+        \item $R_{X} = \{\underbrace{0}_{x_1}, \underbrace{1}_{x_2}, \underbrace{2}_{x_3}\}$
+        \item Busquemos $p_{X}(x) = P(X = x)$ para cada $x \in \mathbb{R}$
+        \begin{equation*}
+            \begin{aligned}
+                p_{X}(0) &= P(X = 0) = P((\overline{C}, \overline{C})) = \frac{1}{4}\\
+                p_{X}(1) &= P(X = 1) = P((C, \overline{C}) \cup (\overline{C}, C)) = \frac{1}{2}\\
+                p_{X}(2) &= P(X = 2) = P((C,  C)) = \frac{1}{4}\\
+            \end{aligned}
+        \end{equation*}
+    \end{enumerate}
+    Entonces
+    \begin{equation*}
+        \begin{aligned}
+            P(\text{"alguna cara"}) &= P(X \geq 1)\\
+                                    &= P(X = 1) + P(X = 2)\\
+                                    &= \frac{3}{4}
+        \end{aligned} 
+    \end{equation*}
+\end{example*}
+
+\begin{theorem}
+    Sea $X$ una $V.A.D.$, entonces
+    \begin{equation*}
+        p_{X}(B) = \sum_{x_{i} \in B} p_{X}(x_{i})
+    \end{equation*}
+\end{theorem}
+
+Para la funcion de distribucion del ejemplo tenemos que
+
+\begin{equation*}
+    F_{X}(x) = P(X \leq x) = 
+    \left\{
+        \begin{aligned}
+            &0 &x<0\\
+            &\frac{1}{4} &0\leq x \leq 1\\
+            &\frac{3}{4} &1  \leq x \leq 2\\
+            &1 &2 \leq x
+        \end{aligned}
+    \right.
+\end{equation*}
+
+\begin{example*}
+    De un conjunto de 7 ingenieras y 4 matematicas se eligen al azar 5 personas. Sea $X$ el numero de ingenieras elegidas
+    \begin{enumerate}
+        \item Hallar la funcion de probabilidad de $X$ y graficarla.
+        \item Hallar la funcion de distribucion de $X$ y graficarla.
+        \item Cual es la probabilidad de que el grupo elegido este formado por 3 ingenieras?
+    \end{enumerate}
+    \textbf{Paso 1:} defino la variable aleatoria
+    \begin{center}
+        X: "Cantidad de ingenieras en el grupo de 5".
+    \end{center}
+    \textbf{Paso 2:} encontrar los valores posibles de mi variable aleatoria
+    \begin{equation*}
+        R_{X} = \{1, 2, 3, 4, 5\}
+    \end{equation*}
+    \textbf{Paso 3:} encontrar la funcion de probabilidad
+    \begin{equation*}
+        p_{X}(x) = P(X = x) \forall{x} \in R_{X}
+    \end{equation*}
+    Empecemos: saco 5 personas al azar, sin importarme el orden
+    \begin{equation*}
+        \#CP = \binom{11}{5}
+    \end{equation*}
+    Ahora por Laplace calculo las funciones de probabilidad
+    \begin{equation*}
+        \begin{aligned}
+            p_{X}(1) = P(X = 1) = \frac{\binom{7}{1}\binom{4}{4}}{\binom{11}{5}} = \frac{7}{462}\\
+            p_{X}(2) = P(X = 2) = \frac{\binom{7}{2}\binom{4}{3}}{\binom{11}{5}} = \frac{84}{462}\\
+            p_{X}(3) = P(X = 3) = \frac{\binom{7}{3}\binom{4}{2}}{\binom{11}{5}} = \frac{210}{462}\\
+            p_{X}(4) = P(X = 4) = \frac{\binom{7}{4}\binom{4}{1}}{\binom{11}{5}} = \frac{140}{462}\\
+            p_{X}(5) = P(X = 5) = \frac{\binom{7}{5}\binom{4}{0}}{\binom{11}{5}} = \frac{21}{462}\\
+        \end{aligned}
+    \end{equation*}
+    Para terminar con lo anterior, hace falta verificar la definicion
+    \begin{enumerate}
+        \item $P(X = x_{i}) \geq 0$
+        \item $\sum p_{X}(x_{i}) = 1$
+    \end{enumerate}
+    \begin{center}
+        GRAFICO
+    \end{center}
+    Ahora busco la funcion de distribucion
+    \begin{equation*}
+        F_{X}(x) = P(X \leq x) = 
+        \left\{
+            \begin{aligned}
+                &0 &x<1\\
+                &\frac{7}{462} &1\leq x < 2\\
+                &\frac{7}{462} + \frac{84}{462} &2\leq x < 3\\
+                &\frac{7}{462} + \frac{84}{462} + \frac{210}{462} &3\leq x < 4\\
+                &\frac{7}{462} + \frac{84}{462} + \frac{210}{462} + \frac{140}{462} &4\leq x < 5\\
+                &1 &x \geq 5\\
+            \end{aligned}
+        \right.
+    \end{equation*}
+    Verifico la definicion y confirmo que la funcion es siempre continua a derecha, y esta definida para todo $x \in \mathbb{R}$.
+    Por ultimo
+    \begin{equation*}
+        \begin{aligned}
+            P(X \geq 3) &= 1 - P(X \leq 2)\\ 
+                        &= 1 - F_{X}(2)\\
+                        &= 1 - \frac{91}{462}\\
+                        &= \frac{371}{462}\\
+        \end{aligned}
+    \end{equation*}
+\end{example*}
