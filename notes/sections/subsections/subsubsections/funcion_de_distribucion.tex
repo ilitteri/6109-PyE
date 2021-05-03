@@ -1,0 +1,17 @@
+\documentclass[../../../main.tex]{subfiles}
+
+\begin{definition}[Funcion de Distribucion]
+    Sea $(\Omega, \mathcal{A}, P)$ un espacio de probabilidad y $X$ una $V.A.$, definimos su funcion de distribucion $F_{X}: \mathbb{R} \rightarrow [0, 1]$ dada por
+    \begin{equation*}
+        F_{X} = P(X \leq x), \forall{x} \in \mathbb{R}
+    \end{equation*}
+\end{definition}
+
+\begin{properties}
+    \begin{enumerate}
+        \item $F_{X}(x) \in [0, 1]$ $\forall{x} \in \mathbb{R}$.
+        \item $F_{X}(x)$ es monotona no decreciente.
+        \item $F_{X}(x)$ es continua a derecha.
+        \item $\lim_{x \rightarrow -\infty} F_{X}(x) = 0$ y $\lim_{x \rightarrow +\infty} F_{X}(x) = 1$
+    \end{enumerate}
+\end{properties}
