@@ -8,9 +8,9 @@ Simplemente reportalo como un Issue.
 
 ## ¿Querés colaborar y complementar con tus apuntes o notas algo incompleto y lo queres completar?
 
-### Estoy familiarizado con GitHub
-
 Forkeá el repositorio, y manteniendo la estructura utilizada en el proyecto de LaTeX en donde están escritas las notas, completá o quitá lo que te parezca y luego hacé una Pull Request.
 
-### No estoy familiarizado con GitHub
+## Estructura del proyecto de LaTeX
 
+<a href="https://github.com/ilitteri/6109-PyE/blob/main/extra/notes_file_system.png"></a>
+<img align="center" src="https://github.com/ilitteri/6109-PyE/blob/main/extra/notes_file_system.png"></img>
