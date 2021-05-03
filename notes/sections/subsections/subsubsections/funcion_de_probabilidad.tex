@@ -1,0 +1,57 @@
+\documentclass[../../../main.tex]{subfiles}
+
+\begin{definition}[Funcion de Probabilidad]
+    Sea $X$ una $V.A.D.$, se llama funcion de probabilidad de $X$ a una funcion $p_(X): \mathbb{R} \rightarrow [0, 1]$ tal que $p_{X}(x) = P(X = x)$. Con cada resultado posible $x_{i}$ asociamos un numero $p_{X}(x_{i}) = P(X = x_{i})$ que debe cmumplir:
+    \begin{enumerate}
+        \item $p_{X}(x_{i}) \geq 0$ $\forall{i}$
+        \item $\sum_{x \in \mathbb{R}} p_{X}(x) = 1$
+    \end{enumerate}
+\end{definition}
+
+\begin{example*}
+    $E.A.$: tiro una moneda 2 veces y observo el resultado. Defino C: observo cara.
+    \begin{equation*}
+        \Omega = \{(C, C), (C, \overline{C}), (\overline{C}, C), (\overline{C}, \overline{C})\}
+    \end{equation*}
+    \begin{enumerate}
+        \item X: "Cantidad de caras observadas al tirar una moneda 2 veces".
+        \item $R_{X} = \{\underbrace{0}_{x_1}, \underbrace{1}_{x_2}, \underbrace{2}_{x_3}\}$
+        \item Busquemos $p_{X}(x) = P(X = x)$ para cada $x \in \mathbb{R}$
+        \begin{equation*}
+            \begin{aligned}
+                p_{X}(0) &= P(X = 0) = P((\overline{C}, \overline{C})) = \frac{1}{4}\\
+                p_{X}(1) &= P(X = 1) = P((C, \overline{C}) \cup (\overline{C}, C)) = \frac{1}{2}\\
+                p_{X}(2) &= P(X = 2) = P((C,  C)) = \frac{1}{4}\\
+            \end{aligned}
+        \end{equation*}
+    \end{enumerate}
+    Entonces
+    \begin{equation*}
+        \begin{aligned}
+            P(\text{"alguna cara"}) &= P(X \geq 1)\\
+                                    &= P(X = 1) + P(X = 2)\\
+                                    &= \frac{3}{4}
+        \end{aligned} 
+    \end{equation*}
+\end{example*}
+
+\begin{theorem}
+    Sea $X$ una $V.A.D.$, entonces
+    \begin{equation*}
+        p_{X}(B) = \sum_{x_{i} \in B} p_{X}(x_{i})
+    \end{equation*}
+\end{theorem}
+
+Para la funcion de distribucion del ejemplo tenemos que
+
+\begin{equation*}
+    F_{X}(x) = P(X \leq x) = 
+    \left\{
+        \begin{aligned}
+            &0 &x<0\\
+            &\frac{1}{4} &0\leq x \leq 1\\
+            &\frac{3}{4} &1  \leq x \leq 2\\
+            &1 &2 \leq x
+        \end{aligned}
+    \right.
+\end{equation*}
