@@ -1,0 +1,75 @@
+\documentclass[../../../main.tex]{subfiles}
+
+\begin{definition}[Fórmula de Probabilidad Total]
+    Sea
+    \begin{equation*}
+        \begin{aligned}
+            P(A) &= P((A \cap B_{1}) \cup (A \cap B_{2}) \cup \dots \cup (A \cap B_{k}))\\
+                 &= P((A \cap B_{1})) + P((A \cap B_{2})) + \dots + P((A \cap B_{k}))
+        \end{aligned}
+    \end{equation*}
+    sabiendo que 
+    \begin{equation*}
+        P(A \cap B) = P(A|B) \cdot P(B)
+    \end{equation*}
+    definimos a la fórmula de probabilidad total como
+    \begin{equation*}
+        P(A) = \sum_{i=1}^{k} P(A|B_{i}) \cdot P(B_{i})
+    \end{equation*}
+\end{definition}
+
+\begin{defexample}
+    Sé que la probabilidad de que un dado fabricado por una máquina M1 sea defectuoso es de 0.1, si es de la máquina 2 es de 0.05, y si es de la máquina 3 es de 0.01. La producción se divide como
+    \begin{center}
+        $M1 \rightarrow 20\%$ de la producción\\
+        $M2 \rightarrow 30\%$ de la producción\\
+        $M3 \rightarrow 50\%$ de la producción
+    \end{center}
+    Suponiendo que todos los dados fabricados van a parar a la misma caja. Si elijo un dado al azar de la caja, cuál es la probabilidad de que ese dado sea defectuoso'.
+
+    Solución: Voy a leer de nuevo mi experimento y entender cual es el experimento aleatorio y a partir de el definir eventos. El EA consiste en "Elegir un dado de la caja al azar y observar si es defectuoso". Los eventos que me van a interesar definir son:
+
+    \begin{center}
+        $M_{i}$: "El dado elegido al azar proviene de la máquina $i$". $i=1, 2, 3$\\
+        D: "El dado elegido es defectuoso".
+    \end{center}
+
+    Ahora intento visualizar todos los posibles resultados de mi experimento. Utilizando un diagrama de árbol:
+
+    \begin{center}
+        \subfile{../../../diagrams/example_prob_tree.tex}
+    \end{center}
+
+    Tenemos que calcular $P(D)$, observamos en el árbol de probabilidades que la probabilidad de que el dado sea defectuoso se puede calcular como la probabilidad de que el dado sea defectuoso de la máquina 1, o que sea defectuoso de la máquina 2, o que sea defectuoso de la máquina 3:
+    \begin{equation*}
+        D = (D \cap M_{1}) \cup (D \cap M_{2}) \cup (D \cap M_{3})
+    \end{equation*}
+    Como las ramas son excluyentes (el dado no puede ser de más de una máquina al mismo tiempo), podemos calcular la probabilidad de $D$ de la siguiente manera
+    \begin{equation*}
+        \begin{aligned}
+            P(D) &= P((D \cap M_{1}) \cup (D \cap M_{2}) \cup (D \cap M_{3}))\\
+                 &= P(D \cap M_{1}) + P(D \cap M_{2}) + P(D \cap M_{3}))\\
+                 &= P(M_{1}) \cdot P(D \cap M_{1}) + P(M_{2}) \cdot P(D \cap M_{2}) + P(M_{3}) \cdot P(D \cap M_{3})\\
+                 &= 0.2 \cdot 0.1 + 0.3 \cdot 0.05 + 0.5 \cdot 0.01\\
+                 &= 0.04
+        \end{aligned}
+    \end{equation*}
+\end{defexample}
+
+\begin{observation}
+    La probabilidad obtenida no puede ser más chica que la producida por la "mejor" máquina, ni más grande que la producida por la "peor" máquina.
+\end{observation}
+
+\begin{defexample}
+    Usando el enunciado y datos del ejemplo anterior, ahora se sabe que el dado es defectuoso, y quiero saber que máquina lo fabricó.
+
+    Solución: Recordando que $P(M_{1}) = 0.2$ yo lo que quiero ver ahora es cómo se ve modificada esa probabilidad ahora que sé que el dado es defectuoso
+    \begin{equation*}
+        \begin{aligned}
+            P(M_{1}|D) &= \frac{P(D \cap M_{1})}{P(D)}\\
+                       &= \frac{P(D|M_{1}) \cdot P(M_{1})}{P(D)}\\
+                       &= \frac{0.1 \cdot 0.2}{0.4}\\
+                       &= 0.5
+        \end{aligned}
+    \end{equation*}
+\end{defexample}
