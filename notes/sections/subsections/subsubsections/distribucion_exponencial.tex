@@ -1,0 +1,64 @@
+\documentclass[../../../main.tex]{subfiles}
+
+\begin{definition}[Distribucion Exponencial]
+    Una variable aleatoria tiene distribucion exponencial de parametro $\lambda > 0$ si su funcion de densidad esta dada por
+    \begin{equation*}
+        f_X(x) = 
+        \left\{
+            \begin{aligned}
+                &\lambda e^{-\lambda x} \text{ si }a < x < b\\
+                &0 \text{ e.o.c}
+            \end{aligned}
+        \right.
+    \end{equation*}
+
+    \begin{center}
+        \subfile{../../../diagrams/distribucion_exponencial.tex}
+    \end{center}
+
+    \begin{equation*}
+        \begin{aligned}
+            \int_{-\infty}^{\infty}f_X(x) dx &= \int_{0}^{\infty} \lambda e^{-\lambda x} dx\\
+                                             &= -e^{-\lambda x}\Biggr|_{0}^{\infty}\\
+                                             &= 1
+        \end{aligned}
+        \text{siempre que } \lambda > 0, \lambda e^{-\lambda x}>0
+    \end{equation*}
+\end{definition}
+
+Calculando su funcion de distribucion
+
+\begin{equation*}
+    F_X(x) = P(X \leq x) =
+    \left\{
+        \begin{aligned}
+            &0 &x < 0\\
+            &\int_{0}^{x} \lambda e^{-\lambda t} dt = 1 - e^{-\lambda t} &x\geq 0
+        \end{aligned}
+    \right.
+\end{equation*}
+
+Entonces, i $x<0$
+
+\begin{equation*}
+    P(X>x) = 1 - F_{X}(x = e^{-\lambda x})
+\end{equation*}
+
+\begin{properties}
+    \begin{enumerate}
+        \item Si $X \sim \mathcal{E}(\lambda)$ entonces $P(X>t+s, X>t) = P(X > s)$, $\forall t, s \in \mathbb{R}^{+}$
+        \begin{proof}
+            \begin{equation*}
+                \begin{aligned}
+                    P(X>t+s|X>t) &= \frac{P(X>t+s, X>t)}{P(X>t)}\\
+                                 &= \frac{e^{-\lambda (t+s)}}{e^{-\lambda t}}\\
+                                 &= e^{-\lambda s}\\
+                                 &= P(X>s)
+                \end{aligned}
+            \end{equation*}
+        \end{proof}
+        \textbf{Ejemplo}\\
+        Supongamos que X es la duracion de una lampara de bajo consumo, entonces, la ecuacion anterior expresaria, que probabilidad hay de que mi lampara dure 8 horas si ya se que duro 4 horas. Y desarrollando llegamos a que esa expresion es equivalente a decir que probabilidad hay de que mi lampara dure mas de 4 horas. Esta propiedad se llama perdida de memoria.
+        \item Si $X$ es una $V.A.C$ y $P(X>t+s|X>t) = P(X>s)$, $\forall t, s \in \mathbb{R}^{+}$ entonces existe $\lambda > 0$ tal que $X \sim \mathcal{E}(\lambda)$. En otras palabras, si $X$ es continua y tiene perdida de memoria entonces $X$ es una distribucion exponencial
+    \end{enumerate}
+\end{properties}
