@@ -174,3 +174,181 @@ Para la funcion de distribucion del ejemplo tenemos que
         \end{aligned}
     \end{equation*}
 \end{example*}
+
+\begin{definition}[Modelos]
+    Una $V.A.$ tiene distribucion de \textbf{Bernoulli} si sus valores posibles son 0 y 1 y le asigna $P(X = 1) = p$. Es decir, 
+    \begin{equation*}
+        X \text{ es } V.A.D., R_{X} = \{0, 1\} \text{ y } p_{X}(0) = 1 - p; p_{X}(1) = p.
+    \end{equation*}
+    Notacion:
+    \begin{equation*}
+        X \sim Ber(p)
+    \end{equation*}
+    Se lee, "la varaibale aleatoria $X$ tiene distribucion de Bernoulli con parametro $p$"
+\end{definition}
+
+\begin{definition}[Funcion Indicadora]
+    Un caso particular, es la funcion indicadore, que es una forma "compacta" de escribir una funcion partida
+    \begin{equation*}
+        \mathbb{1}\{X \in A\} = 
+        \left\{
+           \begin{aligned}
+                &0 &X \notin A\\
+                &1 &X \in A
+           \end{aligned}
+        \right.
+    \end{equation*}
+\end{definition}
+
+\textbf{IMPORTANTE} Para trabajar en la guia 2, el procedimiento es:
+\begin{center}
+    Identificar modelos $\rightarrow$ Tabla de Distribuciones
+\end{center}
+$V.A.D.$:
+\begin{center}
+    \begin{enumerate}
+        \item Encuentro la $p_{X}(x)$
+        \item Voy a la tabla y veo a quien pertenece.
+    \end{enumerate}
+\end{center}
+
+\begin{example*}
+    \begin{equation*}
+        p_{X}(x) = \frac{\binom{7}{x}\binom{4}{5-x}}{\binom{11}{5}}, x = 1, 2, 3, 4, 5
+    \end{equation*}
+\end{example*}
+
+\begin{definition}[Variables Aleatorias Continuas]
+    Una variable aleatoria es continua si se cumplen las siguientes condiciones
+    \begin{enumerate}
+        \item Su conjunto de valores posibles se compone de todos los numeros que hay en un solo intervalo, o en una union exdcluyente de intervalos.
+        \item Ningun valor posible de la variable aleatoria tiene probabilidad positiva, es decir $P(X = C) = 0$ $\forall{C \in \mathbb{R}}$
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}[Funcion de Densidad de Probabilidad]
+    Se dice que $X$ es una $V.A.C.$ si existe una funcion $f_{X}: \mathbb{R} \rightarrow \mathbb{R}$, llamada \textbf{funcion de densidad de probabilidad}, que satisface las siguientes condiciones
+    \begin{enumerate}
+        \item $f_{X} \geq 0$, $\forall{x} \in \mathbb{R}$
+        \item $\int_{-\infty}^{\infty}f_{X}(x)dx = 1$
+        \item Para cualquier $a$ y $b$ tales que $-\infty < a < b < +\infty$ tenemos
+        \begin{equation*}
+            P(a < X < b) = \int_{a}^{b}f_{X}(x)dx
+        \end{equation*}
+    \end{enumerate}
+    \begin{center}
+        GRAFICO
+    \end{center}
+\end{definition}
+
+\begin{defexample}
+    La demanda de aceite pesado en cientos de litros durante una temporada tiene la siguiente funcion de densidad
+    \begin{equation*}
+        f_{X}(x) = \frac{4x + 1}{3} \cdot \mathbb{1}\{0<x<1\}
+    \end{equation*}
+    \begin{enumerate}
+        \item Graficar $f_{X}(x)$ y verificar que sea una funcion de densidad.
+        \item Hallar la funcion de distribucion de $X$.
+        \item Calcular $P(\frac{1}{3} < X \leq \frac{2}{3})$ y $P(\frac{1}{3} < X \leq \frac{2}{3}|X < \frac{1}{2})$
+    \end{enumerate}
+    \begin{enumerate}
+        \item 
+        \textbf{Paso 1:} Defino una variable aleatoria.
+        \begin{center}
+            X: "Demanda de aceite en cientos de litros".
+        \end{center}
+        \textbf{Paso 2:} Grafico y verifico si es de densidad
+        \begin{equation*}
+            f_{X}(x) = 
+            \left\{
+                \begin{aligned}
+                    &\frac{4x + 1}{3} &0<x<1\\
+                    &0 &e.o.c.
+                \end{aligned}
+            \right.
+        \end{equation*}
+        \begin{enumerate}
+            \item $f_{X} \geq 0$. SI
+            \item $\int_{-\infty}^{\infty}f_{X}(x)dx = 1$. SI (calculas la integral o calcular el area de la figura bajo la curva, en este caso, el area del trapecio).
+        \end{enumerate}
+        \item 
+        \begin{equation*}
+            \begin{aligned}
+                F_{X}(x) &= P(X \leq x)\\
+                         &= \int_{-\infty}^{x}f_{X}(t)dt\\
+                         &=
+                         \left\{
+                             \begin{aligned}
+                                &\int_{-\infty}^{x}0dx = 0 &x< 0\\
+                                &\int_{-\infty}^{0}0dx + \int_{0}^{x}\frac{4t + 1}{3}dt &0 \leq x < 1\\
+                                &1 &x\geq 1
+                             \end{aligned}
+                         \right.\\
+                         &= 
+                         \left\{
+                            \begin{aligned}
+                               &0 &x< 0\\
+                               &2x^{2} + x &0 \leq x < 1\\
+                               &1 &x\geq 1
+                            \end{aligned}
+                         \right.\\
+            \end{aligned}
+        \end{equation*}
+        Ahora graficamos la funcion de probabilidad para verificar si cumple con las condiciones.
+    \end{enumerate}
+\end{defexample}
+
+\begin{note}
+    Si $X$ es una $V.A.C.$, $F_{X}(x)$ es una funcion continua $\forall{x} \in \mathbb{R}$.
+\end{note}
+
+\begin{theorem}
+    Sea $F_{X}(x)$ la funcion de distribucion de una $V.A.C.$ (admite derivada), luego
+    \begin{equation*}
+        f_{X}(x) = \frac{\partial}{\partial{x}} F_{X}(x)
+    \end{equation*}
+\end{theorem}
+
+\begin{note}
+    La funcion de densidad solo existe para $V.A.C.$
+\end{note}
+
+\subsubsection{Tipo de Variable Segun su Funcion de Distribucion}
+
+\subsubsection{Atomo}
+\begin{definition}[Atomo]
+    Diremos que $a \in \mathbb{R}$ es un atomo de $F_{X}(x)$ si su peso es positivo, es decor $P(X = a) > 0$.
+    El conjunto de todos los atomos de $F_{X}(x)$ coincide con todos los puntos de discontinuidad de $F_{X}(x)$. Podemos definir:
+    \begin{enumerate}
+        \item La $V.A.$ $X$ sera discreta si la suma de las probabilidades de todos los atomos es 1.
+        \item La $V.A.$ $X$ sera continua, si $F_{X}(x)$ es continua (el conjunto de atomos es vacio).
+        \item La $V.A.$ $X$ sera \textbf{MIXTA} si no es ni continua, ni discreta.
+    \end{enumerate}
+\end{definition}
+
+\subsubsection{Soporte}
+\begin{definition}[Soporte]
+    \begin{equation*}
+        S_{X} = \{x \in \mathbb{R}: F_{X}(x) - F_{X}(\overline{x}) \neq 0 \text{ o } \frac{\partial}{\partial{x}}F_{X}(x) \neq 0 \}
+    \end{equation*}
+\end{definition}
+
+\begin{example*}
+    Sea $X$ una $V.A.$ con funcion de distribucion
+    \begin{equation*}
+        \begin{aligned}
+            F_{X}(x) &= P(X \leq x)\\
+                     &= \frac{x}{4} \cdot \mathbb{1}\{0 \leq x < 1\} + \frac{1}{3} \cdot \mathbb{1}\{1 \leq x < 2\} + \frac{x}{6} \cdot \mathbb{1}\{x \geq 4\}
+        \end{aligned}
+    \end{equation*}
+    \begin{enumerate}
+        \item Hallar
+        \begin{equation*}
+            P(1 < X \leq 4), P(1 \leq X \leq 4), P(1 \leq X < 4), P(1 < X < 4) 
+        \end{equation*}
+        \item Sean $A = [1, 3.5]$, $B = (0.5, 3)$ calcular
+        \begin{equation*}
+            P(X \in A), P(X \in B|X \in A)
+        \end{equation*}
+    \end{enumerate}
+\end{example*}
