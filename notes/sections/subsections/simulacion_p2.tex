@@ -1,0 +1,137 @@
+\documentclass[../../main.tex]{subfiles}
+
+\begin{examples*}
+    \begin{enumerate}
+        \item (Repaso cap.1) Simular el tiro de una moneda usando un numero al azar entre 0 y 1.
+        Vimos que en una recta de 0 a 1, marcando el medio en 0.5 el lado izquierdo o derecho significaba cara o ceca.
+        Formalizando:
+        \begin{center}
+            X: "Cantidad de caras al tirar una moneda".
+        \end{center}
+        \begin{equation*}
+            U \sim \mathcal{U}(0, 1) 
+            \left\{
+                \begin{aligned}
+                    &0 \leq u < 0.5 &\rightarrow& &x = 1\\
+                    &0.5 \leq u < 1 &\rightarrow& &x = 0
+                \end{aligned}
+            \right.
+        \end{equation*}
+        Esto funciona porque
+        \begin{equation*}
+            P( 0 \leq U < 0.5) = P(X = 1) = 0.5
+        \end{equation*}
+        \begin{equation*}
+            P( 0.5 \leq U < 1) = P(X = 0) = 0.5
+        \end{equation*}
+        Estos dos eventos tienen la misma probabilidad de ocurrir, entonces es una buena forma de simular tirar una moneda.
+        Esta relacion entre las variables es la relacion que vamos a encontrar cada vez que querramos simular.
+        \item Simular el tiro de un dado usando un numero al azar entre 0 y 1. Definiendo nuestra variable aleatoria
+        \begin{center}
+            $X$: "Valor observado al arrojar un dado"
+        \end{center}
+        Y $U$ va a ser nuestra variable aleatorai uniforme 0,1 (no significa nada, es mi herramienta de simulacion, lo que queremos hacer es traducir esos valores de $U$ a valores de $X$ que si significan algo para nosotros)
+        \begin{equation*}
+            U \sim \mathcal{U}(0, 1)
+        \end{equation*}
+        Escribiendo una recta (regla de traduccion) de este experimento
+        \begin{equation*}
+            \begin{aligned}
+                &0 \leq u < \frac{1}{6} &\rightarrow& &x = 1\\
+                &\frac{1}{6} \leq u < \frac{2}{6} &\rightarrow& &x = 2\\
+                &\frac{2}{6} \leq u < \frac{3}{6} &\rightarrow& &x = 3\\
+                &\frac{3}{6} \leq u < \frac{4}{6} &\rightarrow& &x = 4\\
+                &\frac{4}{6} \leq u < \frac{5}{6} &\rightarrow& &x = 5\\
+                &\frac{5}{6} \leq u \leq 1 &\rightarrow& &x = 6\\
+            \end{aligned}
+        \end{equation*}
+        Lo que tengo aca, es una formula que me dice la equivalencia entre $U$ y $X$.
+        Decimos que vamos a considerar 2 evbentos como "equivalentes" si tienen la misma probabilidad de ocurrir.
+    \end{enumerate}
+    \item Simular 3 valores de una $V.A.$ con distribucion exponencial a partir de 3 valores seleccionados al azar en el intervalo [0, 1]
+    \begin{equation*}
+        X \sim \mathcal{E}(1)    
+    \end{equation*}
+    Dadods $u_{1}, u_{2}, u_{3}$ necesito una "formula" para transformarlos a $x_{1}, x_{1}, x_{1}$ (y asi simular los 3 valores exponenciales).
+    Grafico las funciones de distribucion de $U$ y la de $X$. El valor dado de $U$ devo ver que valor acumula, y ver el valor de $X$ que acumula la misma probabilidad, entonces ese valor de $X$ que acumula la misma probabilidad que el de $U$, significa que es el equivalente.
+    En general
+    \begin{equation*}
+        F_{U}(u_{i}) = F_{X}(x_{i})
+    \end{equation*}
+    Para cada $u_{i}$, la $F_{U}(_{i})$ va a ser igual a $F_{X}(x_{i})$. Luego despejo $x_{i}$ en funcion de $u_{i}$. Quedando entonces
+    \begin{equation*}
+        F_{U}(u_{i}) = u_{i} = F_{X}(x_{i}) = 1 - e^{-x_{i}}
+    \end{equation*}
+    \begin{equation*}
+        \Rightarrow x_{i} = -\ln(1 - u_{i})
+    \end{equation*}
+    Y asi ya encontre mi formula para simular cualquier valore de $x_{i} > 0$ en funcion de un valor al azar entre 0 y 1.
+\end{examples*}
+
+\begin{definition}[Eventos Equivalentes para Variables Continuas]
+    Diremos que 2 eventos los consideraremos equivalentes cuando acumulan la misma probabilidad.
+\end{definition}
+
+\begin{definition}[Inversa Generalizada]
+    \begin{equation*}
+        F_{X}^{-1}(u) = min\{x \in \mathbb{R}: F_{X}(x) \geq u\}, u \in (0, 1)
+    \end{equation*}
+\end{definition}
+
+\begin{observation}
+    Sea $F: \mathbb{R} \rightarrow [0, 1]$ una funcion de distribucion, existe una variable4 aleatoria $X$ tal que $F_{X}(x) = P(X \leq x)$
+\end{observation}
+
+\begin{defexample}
+    Simular 5 v alores de la $V.A.$ mixta del ejemplo 3 del video 1, usando 5 valores elegidos al azar entre 0 y 1.
+    Grafico las funciones de distribucion. Primero la funcion de distribucion de la variable que quiero simular, y segundo la funcion de distribucion de la variable que voy a usar para simular.
+    \begin{center}
+        GRAFICOS
+    \end{center}
+    Ya que queremos simular muchos valores, buscamos la formula. Busco $x_{i} = h(u_{i}), 0 < u_{i} < 1$. Pero $F_{X}(x_{i})$ es una funcion partida, por lo tanto $h$ tambien lo sera. Para cada intervalo, buscamos que $F_{X}(x_{i}) = F_{U}(u_{i})$ viendo los graficos.
+    \begin{equation*}
+        u_{i} = F_{X}(x) \rightarrow x_{i} = F_{X}^{-1}(u_{i})
+    \end{equation*}
+    Por partes vamos a ir viendo quien es esa funcion inversa generalizada.
+    \begin{equation*}
+        \begin{aligned}
+            &0 \leq u < \frac{1}{4} &\rightarrow& &u = \frac{x}{4} &\rightarrow& x = 4u\\ 
+            &\frac{1}{4} \leq u \leq \frac{1}{3} &\rightarrow& & &\rightarrow& x = 1\\ 
+            &\frac{1}{3} \leq u < \frac{2}{3} &\rightarrow& &u = \frac{x}{6} &\rightarrow& x = 6u\\ 
+            &\frac{2}{3} \leq u < 1 &\rightarrow& & &\rightarrow& x = 4\\ 
+        \end{aligned}
+    \end{equation*}
+    \begin{equation*}
+        \Rightarrow x = h(u) =
+        \left\{
+            \begin{aligned}
+                &4u &0 \leq u < \frac{1}{4}\\
+                &1 &\frac{1}{4} \leq u \leq \frac{1}{3}\\
+                &6u &\frac{1}{3} < u < \frac{2}{3}\\
+                &4 &1 \leq u\\
+            \end{aligned}
+        \right.
+    \end{equation*}
+\end{defexample}
+
+\begin{theorem}
+    Si $F$ es una funcion que cumple
+    \begin{itemize}
+        \item Ser no decreciente.
+        \item $\lim_{x \rightarrow +\infty} F = 1$ y $\lim_{x \rightarrow -\infty} F = 0$ 
+        \item Continua a derecha.
+    \end{itemize}
+    Entonces si defino
+    \begin{equation*}
+        X = F^{-1}(U)
+    \end{equation*}
+    con
+    \begin{equation*}
+        U \sim \mathcal{U}(0, 1)
+    \end{equation*}
+    se tiene que $X$ es una $V.A.$ cuya funcion de distribucion es la funcion $F$ dada.
+\end{theorem}
+
+\begin{note}
+    Para poder simular lo que realmente hay que entender es como encontrar la funcion de distribucion de la variable que queres simular.
+\end{note}
