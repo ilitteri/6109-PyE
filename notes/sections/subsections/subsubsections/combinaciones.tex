@@ -1,0 +1,73 @@
+\documentclass[../../../main.tex]{subfiles}
+
+\begin{definition}[Combinaciones]
+    Es la cantidad de subconjuntos \underline{NO} ordenados de r elementos que pueden formarse a partir de los conjuntos de n elementos.
+    \begin{equation*}
+        C_{n,r} = \frac{n!}{(n-r)!\cdot r!} = \binom{n}{r}
+    \end{equation*}
+    \begin{equation*}
+        \text{En la calculadora: } \boxed{nCr}
+    \end{equation*}
+    En donde $\binom{n}{r}$ se denomina número combinatorio de n elementos tomados de a r. Lo que me dice este número es de cuantas formas puedo sacar r elementos de un total de n cuando no me importa el orden.
+\end{definition}
+
+\begin{defexamples} Combinaciones
+    \begin{enumerate}
+        \item ¿De cuántas formas diferentes puedo elegir 11 personas de un grupo de 30 para formar un equipo de fútbol?\\
+        Tengo un conjunto de 30 personas, y voy a elegir un subconjunto de 11 personas entonces n = 30, r = 11 y como el orden no me importa, utilizo el número combinatorio para contar estas personas:
+            \begin{equation*}   
+                \#CP = \binom{30}{11}
+            \end{equation*}
+        \item Control de calidad. ¿Cuántas muestras de 10 piezas diferentes puedo elegir de un lote de 100?\\
+        Tengo un conjunto, y un subconjunto, y el orden no me interesa, entonces:
+            \begin{equation*}
+                \#CP = \binom{100}{10}
+            \end{equation*}
+    \end{enumerate}
+\end{defexamples}
+
+\begin{observation}
+    \begin{equation*}
+        \binom{n}{r} = \binom{n}{n-r}
+    \end{equation*}
+\end{observation}
+
+\begin{proof}
+    \begin{equation*}
+        \binom{n}{r} = \binom{n}{n-r}
+    \end{equation*}
+    \begin{equation*}
+        \frac{n!}{r!(n-r)!} = \frac{n!}{(n-r)!r!}
+    \end{equation*}
+\end{proof}
+
+\begin{defexample} Mazo de 40 cartas esáñolas.
+    \begin{enumerate}[label=\alph*)]
+        \item En un mazo de cartas españolas, tengo 10 cartas de espada, 10 cartas de copa, 10 cartas de basto y 10 cartas de oro. ¿Cuántas manos diferentes puede tener una persona jugando al truco?\\
+            \begin{equation*}
+                n = 40, r = 3
+            \end{equation*}
+            \begin{equation*}
+                \#CP = \binom{40}{3}
+            \end{equation*}
+        \item ¿Cuántas formas distintas hay de recibir una mano de oro?\\
+        Todos los casos posibles se dan de elegir 3 cartas de un total de 10 ya que estoy elegiendo entre las cartas que son de oro.
+            \begin{equation*}
+                \#CP = \binom{10}{3}
+            \end{equation*}
+        \item ¿Cuántas manos puedo recibir siendo todas las cartas del mismo palo?\\
+        Separo en casos: tengo 4 posibles resultados dada la cantidad de palos disponibles, y por cada palo tengo la cantidad de posibilidades del resultado anterior, entonces ahora tengo que sumar todas las formas de sacar 3 de cada palo.
+            \begin{equation*}
+                \#CP_{oro} = \binom{10}{3}, \#CP_{basto} = \binom{10}{3}, \#CP_{espada} = \binom{10}{3}, \#CP_{copa} = \binom{10}{3}
+            \end{equation*}
+            \begin{equation*}
+                \#CP = \#CP_{oro} + \#CP_{basto} + \#CP_{espada} + \#CP_{copa}
+            \end{equation*}
+            \begin{equation*}
+                \#CP = 4 \cdot \#CP_{palo}
+            \end{equation*}
+            \begin{equation*}
+                \#CP = 4 \cdot \binom{10}{3}
+            \end{equation*}
+    \end{enumerate}
+\end{defexample}
