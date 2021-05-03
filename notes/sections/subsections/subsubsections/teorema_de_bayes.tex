@@ -1,0 +1,57 @@
+\documentclass[../../../main.tex]{subfiles}
+
+\begin{theorem}[Teorema de Bayes]
+    Sean $B_{1}, \dots, B_{k}$ es una partición de $\Omega$, $A$ un evento de probabilidad positiva, entonces
+    \begin{equation*}
+        P(B_{i}|A) = \frac{P(A|B_{i}) \cdot P(B_{i})}{\sum_{j=1}^{k}P(A|B_{j})\cdot P(B_{j})}
+    \end{equation*}
+\end{theorem}
+
+\begin{defexample}
+    En una urna hay una bola verde y dos bolas rojas. En cada paso se extrae una bola al azar y se la repone junto con otra del mismo color.
+    \begin{enumerate}[label=(\alph*)]
+        \item Calcular la proabilidad de que al finalziar el segundo paso la urna contenga dos bolas verdes y 3 rojas.
+        \item Si al finalizar el segundo paso la urna contiene dos bolas verdes y 3 rojas, ¿cuál es la probabilidad de que en el primer paso se haya extraido una bola roja?
+    \end{enumerate}
+
+    Solución: 
+    \begin{enumerate}[label=(\alph*)]
+        \item Voy a extraer una bolita, ver el color, y luego la voy a reponer una bola del mismo color. Me va a interesar cada vez que saco una bolita saber de qué color salio y además saber en qué paso la estoy realizando. Defino dos eventos
+        \begin{center}
+            $R_{i}$: "La extracción $i$ es roja".\\
+            $V_{i}$: "La extracción $i$ es verde". $i = 1, 2$
+        \end{center}
+    
+        \begin{center}
+            \subfile{../../../diagrams/bayes_theorem_example_prob_tree.tex}
+        \end{center}
+    
+        Habiendo llenado mi árbol de probabilidad sabiendo que se trata de un espacio equiprobable, ahora defino un evento
+    
+        \begin{center}
+            S: "Al finalizar, la urna contiene $2V, 3R$".
+        \end{center}
+    
+        Tengo 2 ramas que corresponden al evento, es decir, dos caminos posibles que me llevan a ese evento.
+    
+        Aplicando el teorema de Probabilidad Total
+    
+        \begin{equation*}
+            \begin{aligned}
+                P(S) &= P((R_{1} \cap V_{2}) \cup (V_{1} \cap R_{2}))\\
+                     &= P(R_{1}) \cdot P(V_{2}|R_{1}) + P(V_{1}) \cdot P(R_{2}|V_{1})\\
+                     &= \frac{2}{5} \cdot \frac{1}{4} + \frac{1}{5} \cdot \frac{1}{2}\\
+                     &= \frac{1}{3}
+            \end{aligned}
+        \end{equation*}
+        \item Nos están pidiendo es que de todas las opciones posibles que teníamos, me quedo con las que acabamos de analizar.
+            \begin{equation*}
+                \begin{aligned}
+                    P(R_{1}|S) &= \frac{P(R_{1} \cap S)}{P(S)} \therefore S = (R_{1} \cap V_{2}) \cup (V_{1} \cap R_{2}) \Rightarrow S \cap R_{1} = R_{1} \cap V_{2}\\
+                               &= \frac{P(V_{2}|R_{1}) \cdot P(R_{1})}{P(S)}\\
+                               &= \frac{\frac{1}{4} \cdot \frac{2}{3}}{\frac{1}{3}}\\
+                               &= \frac{1}{2}
+                \end{aligned}
+            \end{equation*}
+    \end{enumerate}
+\end{defexample}
