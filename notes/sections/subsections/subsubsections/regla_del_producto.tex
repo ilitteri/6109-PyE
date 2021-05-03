@@ -1,0 +1,32 @@
+\documentclass[../../../main.tex]{subfiles}
+
+\begin{definition}[Regla del Producto]
+    Dados dos conjuntos $A$ y $B$ con $\eta_{A}$ y $\eta_{B}$ elementos cada uno respectivamente, la cantidad de todos los pares ordenados que pueden formarse con un elemento de $A$ y uno de $B$ se calcula como $\eta_{A} \cdot \eta_{B}$
+\end{definition}
+
+\begin{defexamples} Regla del producto
+    \begin{enumerate}
+        \item Tiro un dado 2 veces y por regla del producto:
+            \begin{equation*}
+                \#CP = \underline{6}\cdot\underline{6} = 36
+            \end{equation*}
+        \item  Tiro un dado 3 veces y por regla del producto:
+            \begin{equation*}
+                \#CP = \underline{6}\cdot\underline{6}\cdot\underline{6} = 6^{3}
+            \end{equation*}
+        \item Tiro un dado 4 veces y por regla del producto:
+            \begin{equation*}
+                \#CP = \underline{6}\cdot\underline{6}\cdot\underline{6}\cdot\underline{6} = 6^{4}
+            \end{equation*}
+        \item En 4 tiros, ¿de cuántas formas posibles puede no aparecer ningún 6?\\
+        Tengo 5 opciones en donde no sale un 6, y como son 4 tiros, entonces tengo 5 opciones en donde no sale un 6, 4 veces. Entonces:
+            \begin{equation*}
+                \#CP = \underline{5}\cdot\underline{5}\cdot\underline{5}\cdot\underline{5} = 5^{4}
+            \end{equation*}
+        \item ¿Cuántas patentes de 3 letras y 3 números distintas puedo formar?\\
+        Tengo 3 letras (una raya por letra) y 3 números (una raya por número). Tengo 26 letras posibles para la primer posición, para la segunda y tercera igual (porque se pueden repetir). Con los números, tengo 10 opciones para el primero, el segundo y el tercero (10 dígitos de 0 a 9). Por regla del producto:
+            \begin{equation*}
+                \#CP = \underline{26}\cdot\underline{26}\cdot\underline{26}\cdot\underline{10}\cdot\underline{10}\cdot\underline{10} = 26^{3}\cdot10^{3}
+            \end{equation*}
+    \end{enumerate}
+\end{defexamples}
