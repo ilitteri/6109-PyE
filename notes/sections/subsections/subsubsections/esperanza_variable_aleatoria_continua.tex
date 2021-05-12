@@ -1,0 +1,44 @@
+\documentclass[../../main.tex]{subfiles}
+
+\begin{definition}[Esperanza de una variable aleatoria continua]
+    Sea $X$ una $V.A.C.$ con función de densidad $f_{X}(x)$, el valor esperado de $X$ es
+    \begin{equation*}
+        E(X) = \int_{-\infty}^{\infty} x f_{X}(x)dx
+    \end{equation*}
+\end{definition}
+
+\begin{defexample}
+    Sea $X \sim \mathcal{E}(\lambda)$. Hallar $E(X)$.\\
+    \textit{Solución:} por definición
+    \begin{equation*}
+        \begin{aligned}
+            E(X) &= \int_{-\infty}^{\infty} x f_{X}(x)dx\\
+                 &= \int_{0}^{\infty} x \lambda{e^{-\lambda{x}}} dx\\
+        \end{aligned}
+    \end{equation*}
+    cuya resolución se lleva a cambo integrando por partes, pero, usando la tabla de distribuciones, sabiendo que si integro las funciones que allí se encuentran sobre todo su soporte, obtengo 1 como resultado. Lo que tengo que hacer ahora es mirar lo que está dentro de la integral y ver si se parece a una de las densidades de la tabla de funciones de densidad, ya que si se parece a una, lo que voy a ahcer es llevarla a que sea igual y por lo tanto ya se cuanto vale la integral.
+    En este caso se parece a la distribución de una Gamma cuya densidad es
+    \begin{equation*}
+        f_{T}(t) = \frac{\lambda^{x}}{(x-1)!} \cdot t^{x-1} \cdot e^{-\lambda{x}}
+        \quad t>0
+    \end{equation*}
+    Para encontrar los parámetros observo, la variable estaba elevada al primer parámetro menos uno. Mi variable es $x$ y está elevado a la uno, por lo tanto el primer parámetro parece ser 2, de manera que tengo $x^{2-1}$, y el segundo parámetro lo observo en el exponente de la exponencial, que es $\lambda$, y en este caso la exponencial está elevada a $-\lambda{x}$, por lo tanto, lo que está dentro de mi integral se parece mucho a 
+    \begin{equation*}
+        \Gamma(2, \lambda)
+    \end{equation*}
+    luego su función de densidad de esta Gamma es
+    \begin{equation*}
+        \lambda^{2} \cdot x \cdot e^{-\lambda{x}}
+    \end{equation*}
+    y yo quiero integrar esa densidad entre 0 e infinito
+    \begin{equation*}
+        \int_{0}^{\infty}\lambda^{2} \cdot x \cdot e^{-\lambda{x}} dx
+    \end{equation*}
+    pero aún no está exactamente como la que tenía antes, pues me sobra un $\lambda$ multiplicando, entonces acomodo
+    \begin{equation*}
+        \begin{aligned}
+            E(X) &= \frac{1}{\lambda} \underbrace{\int_{0}^{\infty}\lambda^{2} \cdot x \cdot e^{-\lambda{x}} dx}_{\text{Da 1, porque es la integral de una función de densidad en todo su soporte}}\\
+                 &= \frac{1}{\lambda}
+        \end{aligned}
+    \end{equation*}
+\end{defexample}
