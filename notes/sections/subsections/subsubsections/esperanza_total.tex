@@ -1,0 +1,62 @@
+\documentclass[../../../main.tex]{subfiles}
+
+\begin{definition}[Esperanza total]
+    Si despejo y pienso en una partición tenemos
+    \begin{equation*}
+        E(X) = E(X|X \in A) \cdot P(X \in A) + E(X|X \in \overline{A}) \cdot P(X \in \overline{A})
+    \end{equation*}
+    que es el cálculo de esperanza total
+\end{definition}
+
+\begin{example*}
+    Hallar $E(T|T<1)$ cuadno $T \sim \mathcal{E}(1)$.\\
+    Solución: sabemos de la distribución exponencial que
+    \begin{itemize}
+        \item $E(T) = 1$.
+        \item $T|T>1 = 1 + T'$ donde $T' \sim \mathcal{E}(1)$.
+        \item $T$ no tiene memoria.
+    \end{itemize}
+    Luego
+    \begin{equation*}
+        \begin{aligned}
+            E(T|T>1) &= 1 + E(T)\\
+                     &= 2 
+        \end{aligned}
+    \end{equation*}
+    Usando la fórmula de esperanza total
+    \begin{equation*}
+        E(T) = E(T|T<1) \cdot P(T<1) + E(T|T\geq1) \cdot P(T\geq1)
+    \end{equation*}
+    despejando
+    \begin{equation*}
+        E(T|T<1) = 0.418
+    \end{equation*}
+\end{example*}
+
+\begin{property}
+    Si yo grafico una función de densidad cualquiera, la parte de $+x$ voy a calcular el área por encima de la función de distribución, y a eso le voy a restar el área por debajo de la función para todos los $-x$.
+    \begin{equation*}
+        E(X) = \int_{0}^{\infty} (1 - F_{X}(x)) dx - \int_{-\infty}^{0} F){X}(x) dx
+    \end{equation*}
+\end{property}
+
+\begin{example*}
+    Hallar la esperanza de $T* = min(T, 1)$ con $T \sim \mathcal{E}(1)$
+    \begin{equation*}
+        T* = 
+        \left\{
+            \begin{aligned}
+                &T &T<1\\
+                &1 &T\geq1
+            \end{aligned}
+        \right.
+    \end{equation*}
+    \begin{equation*}
+        \begin{aligned}
+            E(T*) &= \int_{0}^{1} 1 - (1 - e^{-t}) dt\\
+                  &= \int_{0}^{1}e^{-t} dt\\
+                  &= 1 - e^{-1}
+        \end{aligned}
+    \end{equation*}
+    Si usamos la definición de $E(h(X))$, como $T$ es continua me queda una integral por partes.
+\end{example*}
