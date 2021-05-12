@@ -1,0 +1,19 @@
+\documentclass[../../../main.tex]{subfiles}
+
+\begin{definition}[Función de densidad de un vector alearotio continuo]
+    Sean $X$ e $Y$ $V.A.C.$, una función de densidad de probabilidad conjunta $f_{X, Y}(x, y)$ de estas dos variables es una función que satisface
+    \begin{enumerate}
+        \item 
+        \begin{equation*}
+            f_{X, Y}(x, y) \geq 0
+        \end{equation*}
+        \item 
+        \begin{equation*}
+            \int_{-\infty}^{\infty}\int_{-\infty}^{\infty}f_{X, Y}(x, y) dx dy = 1
+        \end{equation*}
+    \end{enumerate}
+    Entonces, para cualquier conjunto $A$, la probabilidad de que cada conjunto pertenezca a $A$ se calcula como
+    \begin{equation*}
+        P((X, Y) \in A) = \int\int_{A} f_{X, Y}(x, y)dxdy
+    \end{equation*}
+\end{definition}

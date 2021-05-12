@@ -1,0 +1,19 @@
+\documentclass[../../main.tex]{subfiles}
+
+\begin{definition}[Truncamiento]
+    Sea $X$ una $V.A.$ con $F_{X}(x) = P(X \leq x)$
+    \begin{equation*}
+        \begin{aligned}
+            F_{X|X \in A}(x) &= P(X \leq x | x \in A)\\
+                             &= \frac{P(X \leq x, X \in A)}{P(X \in A)}
+        \end{aligned}
+    \end{equation*}
+    \textit{El cálculo de esta probabilidad dependerá del tipo de V.A. y de su distribución}
+\end{definition}
+
+\begin{observation}
+    Si $X$ es una $V.A.C.$ con función de densidad $f_{X}(x) = \frac{\partial}{\partial{x}} F_{X}(x)$, la función de densidad de $X$ condicionada a $X \in A$ se calcula como
+    \begin{equation*}
+        f_{X|X \in A}(x) = \frac{\partial}{\partial{x}} F_{X}(x) = \frac{f_{X}(x) \cdot \mathbf{1}\{X \in A\}}{P(X \in A)}
+    \end{equation*}
+\end{observation}
