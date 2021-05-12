@@ -1,0 +1,68 @@
+\documentclass[../../../main.tex]{subfiles}
+
+\begin{definition}[Función de probabilidad de un vector aleatorio]
+    Sea $X$ e $Y$ dos $V.A.D.$ definidas en el espacio muestral $\Omega$ de un experimento. La \textbf{función de probabilidad conjunta} se define para cada par de números $(x, y)$ como
+    \begin{equation*}
+        p_{X, Y}(x, y) = P(X = x, Y = y)
+    \end{equation*}
+    Debe cumplirse que
+    \begin{enumerate}
+        \item 
+        \begin{equation*}
+            p_{X, Y}(x, y) \geq 0
+        \end{equation*}
+        \item 
+        \begin{equation*}
+            \sum_{x}\sum_{y}p_{X, Y}(x, y) = 1
+        \end{equation*}
+    \end{enumerate}
+\end{definition}
+
+\begin{defexample}
+    De una urna que contiene 3 bolillas numeradas $1, 2, 3$, se extraen sin reposición y sucesivamente 2 bolillas. Sea $X$ el número de la primer bolilla e $Y$ el número de la segunda.
+    \begin{enumerate}
+        \item Hallar la función de probabilidad conjunta de $X$ e $Y$.
+    \end{enumerate}
+    \begin{enumerate}
+        \item Vamos a graficar un dibujo que nos de idea del experimento (urna con bolillas), voy a sacar 2. Como primer paso, defino mis varibales
+        \begin{center}
+            X: "número de la primera bolilla"\\
+            Y: "número de la segunda bolilla"
+        \end{center}
+        Como segundo paso, veo que valores pueden tomar las variables aleatorias, en este caso, una tabla de doble entrada para poder ver todos los valores que puede tomar x, todos los valores que puede tomar y, y para ver todas las probabilidades en conjunto. 
+        \begin{table}[H]
+            \begin{center}
+                \begin{tabular}{c|c|c|c|c}
+                    $y/x$ & $1$ & $2$ & $3$ & $p_{Y}(y)$\\
+                    \hline
+                    $1$ & $0$ & $\frac{1}{6}$ & $\frac{1}{6}$ & $\frac{1}{3}$\\
+                    \hline
+                    $2$ & $\frac{1}{6}$ & $\frac{1}{6}$ & $0$ & $\frac{1}{3}$\\
+                    \hline
+                    $3$ & $\frac{1}{6}$ & $\frac{1}{6}$ & $0$ & $\frac{1}{3}$\\
+                    \hline
+                    $p_{X}(x)$ & $\frac{1}{3}$ & $\frac{1}{3}$ & $\frac{1}{3}$ & 1\\
+                \end{tabular}
+            \end{center}
+        \end{table}
+        Nos piden hayar la función de probabilidad conjunta de $X$ e $Y$, quién por definición es
+        \begin{equation*}
+            p_{X, Y}(x, y) = P(X = x, Y = y)
+            \quad \forall{(x, y)}
+        \end{equation*}
+        Entonces
+        \begin{equation*}
+            \begin{aligned}
+                p_{X, Y}(1, 1) &= P(X = 1, Y = 1) = 0\\
+                p_{X, Y}(1, 2) &= P(X = 1, Y = 2) = \frac{\binom{1}{1}\binom{1}{1}\binom{1}{0}}{\binom{3}{2}} + \frac{\binom{1}{1}\binom{1}{1}\binom{1}{0}}{\binom{3}{2}} = \frac{1}{6}\\
+                p_{X, Y}(1, 3) &= P(X = 1, Y = 3) = \frac{\binom{1}{1}\binom{1}{1}\binom{1}{0}}{\binom{3}{2}} + \frac{\binom{1}{1}\binom{1}{1}\binom{1}{0}}{\binom{3}{2}} = \frac{1}{6}\\
+                p_{X, Y}(2, 1) &= P(X = 2, Y = 1) = \frac{\binom{1}{1}\binom{1}{1}\binom{1}{0}}{\binom{3}{2}} + \frac{\binom{1}{1}\binom{1}{1}\binom{1}{0}}{\binom{3}{2}} = \frac{1}{6}\\
+                p_{X, Y}(2, 2) &= P(X = 2, Y = 2) = 0\\
+                p_{X, Y}(2, 3) &= P(X = 2, Y = 3) = \frac{\binom{1}{1}\binom{1}{1}\binom{1}{0}}{\binom{3}{2}} + \frac{\binom{1}{1}\binom{1}{1}\binom{1}{0}}{\binom{3}{2}} = \frac{1}{6}\\
+                p_{X, Y}(3, 1) &= P(X = 3, Y = 1) = \frac{\binom{1}{1}\binom{1}{1}\binom{1}{0}}{\binom{3}{2}} + \frac{\binom{1}{1}\binom{1}{1}\binom{1}{0}}{\binom{3}{2}} = \frac{1}{6}\\
+                p_{X, Y}(3, 2) &= P(X = 3, Y = 2) = \frac{\binom{1}{1}\binom{1}{1}\binom{1}{0}}{\binom{3}{2}} + \frac{\binom{1}{1}\binom{1}{1}\binom{1}{0}}{\binom{3}{2}} = \frac{1}{6}\\
+                p_{X, Y}(3, 3) &= P(X = 3, Y = 3) = 0\\
+            \end{aligned}
+        \end{equation*}
+    \end{enumerate}
+\end{defexample}
