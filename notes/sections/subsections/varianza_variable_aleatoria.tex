@@ -1,0 +1,43 @@
+\documentclass[../../main.tex]{subfiles}
+
+\begin{definition}[Varianza]
+    Sea $X$ una $V.A.$, definimos la varianza de $X$ como
+    \begin{equation*}
+        Var(X) = E((X - E(X))^{2})
+    \end{equation*}
+\end{definition}
+
+\begin{property}
+    \begin{equation*}
+        \begin{aligned}
+            Var(X) &= E((X - E(X))^{2})\\
+                   &= E(X^{2}) - 2XE(X) + E(X)^{2}\\
+                   &= E(X^{2}) - 2\mu E(X) + \mu^{2}\\
+                   &= E(X^{2}) - \mu^{2}\\
+                   &= E(X^{2}) - E(X)^{2}
+        \end{aligned}
+    \end{equation*}
+\end{property}
+
+\begin{defexample}
+    Para nuestra $X$ mixta, hallar $Var(X)$ y $Var(X?X\leq1)$\\
+    Solución: usando la propiedad $Var(X) = E(X^{2}) - E(X)^{2}$
+    \begin{equation*}
+        \begin{aligned}
+            E(X^{2}) &= \sum_{x \in A} x^{2} \cdot P(X - x) + \int_{\mathbb{R}\backslash A} x^{2} \cdot F'_{X}(x) dx\\
+                     &= 1^{2} \underbrace{P(X = 1)}_{\frac{1}{12}} + 4^{2} \underbrace{P(X = 3)}_{\frac{1}{3}} + \int_{0}^{1} x^{2} \cdot \frac{1}{4} dx + \int_{2}^{4}x^{2} \cdot \frac{1}{6} dx\\
+                     &= \frac{155}{18}\\
+            Var(X) &= \frac{155}{18} - \left(\frac{61}{24}\right)^{2}\\
+                   &= \frac{413}{192}\\
+                   &\approx 2.15
+        \end{aligned}
+    \end{equation*}
+    Para la varianza truncada
+    \begin{equation*}
+        \begin{aligned}
+            Var(X|X \leq 1) &= E(X^{2}|X\leq 1) - E(X |X\leq 1)\\
+            E(X^{2}|X\leq 1) &= \frac{E(X^{2}\mathbf{1}\{x\leq 1\})}{P(X\leq 1)}\\
+                             &=
+        \end{aligned}
+    \end{equation*}
+\end{defexample}
