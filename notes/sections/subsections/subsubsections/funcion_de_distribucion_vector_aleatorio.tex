@@ -1,0 +1,29 @@
+\documentclass[../../../main.tex]{subfiles}
+
+\begin{definition}[Función de distribución de un vector aleatorio]
+    Sea $\mathbb{X} = (X_{1}, \dots, X_{n})$ un vector aleatorio de dimensión $n$, definimos la \textbf{función de distribución de $\mathbb{X}$} como
+    \begin{equation*}
+        F_{\mathbb{X}}(\mathbb{x}) = P(X_{1} \leq x_{1}, \dots, X_{n} \leq x_{n})
+    \end{equation*}
+\end{definition}
+
+\begin{properties} Cuando $\mathbb{X} = (X, Y)$\\
+    \begin{enumerate}
+        \item 
+        \begin{equation*}
+            \lim_{X, Y \rightarrow \infty} F_{\mathbb{X}}(x) = 1
+        \end{equation*}
+        \begin{equation*}
+            \lim_{x \rightarrow -\infty} F_{\mathbb{X}}(x) = 0
+        \end{equation*}
+        \begin{equation*}
+            \lim_{y \rightarrow -\infty} F_{\mathbb{X}}(x) = 0
+        \end{equation*}
+        \item $F_{\mathbb{X}}(x)$ es monótona no decreciente en cada variable.
+        \item $F_{\mathbb{X}}(x)$ es continua a derecha en cada variable.
+        \item
+        \begin{equation*}
+            P((X, Y) \in (a_{1}, b_{1}) \times (a_{2}, b_{2})) = F_{\mathbb{X}}(b_{1}, b_{2}) - F_{\mathbb{X}}(b_{1}, a_{2}) - F_{\mathbb{X}}(a_{1}, b_{2}) + F_{\mathbb{X}}(a_{1}, a_{2})
+        \end{equation*}
+    \end{enumerate}
+\end{properties}
