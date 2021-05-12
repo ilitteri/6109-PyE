@@ -1,0 +1,76 @@
+\documentclass[../../../main.tex]{subfiles}
+
+\begin{definition}[Independencia para Variables Aleatorias]
+    Sea $(X, Y)$ un vector aleatorio, las variables aleatorias $X$ e $Y$ son independientes si y sólo si
+    \begin{equation*}
+        P((X \in A) \cap (Y \in B)) = P(X \in A) \cdot P(Y \in B)
+        \quad \forall{A, B}
+    \end{equation*}
+\end{definition}
+
+\begin{properties} Independencia para Variables Aleatorias\\
+    \begin{enumerate}
+        \item Se dice que $X_{1}, \dots, X_{n}$ son $V.A.$ independientes sii
+        \begin{equation*}
+            F_{X_{1}, \dots, X_{n}}(x_{1}, \dots, x_{n}) = F_{X_{1}}(x_{1}) \cdot ... \cdot F_{X_{n}}(x_{n})
+        \end{equation*}
+        \item Se dice que las $V.A.D.$ $X_{1}, \dots, X_{n}$ son independientes sii
+        \begin{equation*}
+            p_{X_{1}, \dots, X_{n}}(x_{1}, \dots, x_{n}) = p_{X_{1}}(x_{1}) \cdot ... \cdot p_{X_{n}}(x_{n})
+        \end{equation*}
+        \item Se dice que las $V.A.C.$ $X_{1}, \dots, X_{n}$ son independientes sii
+        \begin{equation*}
+            f_{X_{1}, \dots, X_{n}}(x_{1}, \dots, x_{n}) = f_{X_{1}}(x_{1}) \cdot ... \cdot f_{X_{n}}(x_{n})
+        \end{equation*}
+    \end{enumerate}
+\end{properties}
+
+\begin{defexample}
+    Para ir todos los días al trabajo, Donna se dirige en auto hasta la estación de tren y luego sigue su camino en tren. Donna sale de su casa en un intervalo distribuido uniformemente entre las $7:30$ y  las $7:50$. El tiempo de viaje hasta la estación es también uniforme entre $20$ y $40$ minutos, e independiente de la hora de salida. Hay un tren que sale $8:12$ y otro que sale $8:26$.
+    \begin{enumerate}
+        \item Cuál es la probabilidad de que Donna pierda ambos trenes?
+        \item Cuál es la probabilidad de que tenga que esperar más de 8 minutos en la estación hasta que salga el tren?
+    \end{enumerate}\
+    Primero defino las variables aleatorias
+    \begin{center}
+        S: "minutos después de las 7:30 en los que Donna sale de su casa".\\
+        V: "teimpo de viaje a la estación (en minutos)".
+    \end{center}
+    Tenemos que S y V son independientes porque el enunciado dice que el tiempo de viaje es independiente de la hora de salida y además 
+    \begin{equation*}
+        \begin{aligned}
+            S \sim \mathcal{U}(0, 20)\\
+            V \sim \mathcal{U}(20, 40)\\
+        \end{aligned}
+    \end{equation*}
+    Si defino mi hora cero como las 7:30, el primer tren sale en el minuto 42 a partir de esa hora, y el segundo tren sale en el minuto 56.
+    Saber la distribución de las variables es unbiforme, y que son independientes me ayuda a encontrar la función de densidad conjunta ya que
+    \begin{equation*}
+        f_{S, V} = f_{S}(s) \cdot f_{V}(v)
+    \end{equation*}
+    y conozco las densidades marginales porque S y V son uniformes
+    \begin{equation*}
+        f_{S, V} = \frac{1}{20} \mathbf{1}\{0 < s < 20\} \cdot \frac{1}{20} \mathbf{1}\{20 < s < 40\}
+    \end{equation*}
+    \begin{enumerate}
+        \item 
+        \begin{equation*}
+            \begin{aligned}
+                P(\text{"pierde ambos trenes"}) &= P(S + V > 56)\\
+                                                &= P(V > 56 - S)\\
+                                                &= \int\int f_{S, V}(s, v)dsdv\\
+                                                &= \frac{4^{2}}{2} \cdot \frac{1}{20^{2}}\\
+                                                &= \frac{1}{50}
+            \end{aligned}
+        \end{equation*}
+        \item
+        \begin{equation*}
+            \begin{aligned}
+                P(\text{"espere + de 8 minutos"}) &= P(S + V < 34 \text{ o } 42 < S + V < 48)\\
+                                                  &= \frac{14^{2}}{2} \cdot \frac{1}{20^{2}} + \left(\frac{18^{2}}{2} - \frac{12^{2}}{2}\right) \cdot \frac{1}{20^{2}}\\
+                                                  &= \frac{}{}
+            \end{aligned}
+        \end{equation*}
+        Pintamos y calculamos volúmen por geometría sólo cuando la función de densidad es constante.
+    \end{enumerate}
+\end{defexample}
