@@ -1,0 +1,36 @@
+\documentclass[../../main.tex]{subfiles}
+
+\subsubsection{Vector Aleatorio}
+\begin{definition}[Vector Aleatorio]
+    Sea $(\Omega, \mathcal{A}, P)$ un espacio de probabilidad, se dice que $\mathbb{X} = (X_{1}, \dots, X_{n})$ es un \textbf{vector aleatorio} de dimensión $n$, si para cada $j = 1, \dots, n$, $X_{j}: \Omega \rightarrow \mathbb{R}$ es una $V.A.$
+\end{definition}
+
+\begin{theorem}
+    Para todo $\mathbb{X} = (x_{1}, \dots, x_{n}) \in \mathbb{R}^{n}$ se tendrá que
+    \begin{equation*}
+        X^{-1} = ((-\infty, x_{1}) \cdot \dots \cdot (-\infty, x_{n})) \in \mathcal{A}
+    \end{equation*}
+\end{theorem}
+
+\subsubsection{Función de Distribución de un Vector Aleatorio}
+\subfile{subsubsections/funcion_de_distribucion_vector_aleatorio.tex}
+
+\subsubsection{Función de Probabilidad de un Vector Aleatorio Discreto}
+\subfile{subsubsections/funcion_de_probabilidad_vector_aleatorio.tex}
+
+\subsubsection{Función de Probabilidad Marginal Discretas}
+\subfile{subsubsections/funcion_de_probabilidad_marginal_discreta.tex}
+
+En general, sea $A$ cualquier conjunto compuesto de pares de valores $(x, y)$ entonces
+\begin{equation*}
+    P((X, Y) \in A) = \sum\sum_{(x, y) \in A} p_{X, Y}(x, y)
+\end{equation*}
+
+\subsubsection{Función de Densidad de un Vector Aleatorio Continuo}
+\subfile{subsubsections/funcion_de_densidad_vector_aleatorio.tex}
+
+\subsubsection{Función de Probabilidad Marginal Continuas}
+\subfile{subsubsections/funcion_de_probabilidad_marginal_continua.tex}
+
+\subsubsection{Independencia en Variables Aleatorias}
+\subfile{subsubsections/independencia_variables_aleatorias.tex}
