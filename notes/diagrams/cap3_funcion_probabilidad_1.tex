@@ -1,0 +1,44 @@
+\documentclass[../sections/capitulo_3.tex]{subfiles}
+
+\begin{tikzpicture}
+
+    \pgfplotsset{
+        standard/.style={
+           axis x line=middle,
+           axis y line=middle,
+           enlarge x limits=0.15,
+           enlarge y limits=0.15,
+           every axis x label/.style={at={(1,0.1)},anchor=north west},
+           every axis y label/.style={at={(0.1,1.1)},anchor=north},
+           every axis plot post/.style={mark options={fill=white}}
+        }
+    }
+  
+    \begin{axis}[
+        standard,
+        domain = 2:12,
+        samples = 11,
+        xlabel={$x$},
+        ylabel={$p_{X}(x)$},
+        ymin=0,
+        yticklabel={$\frac{\pgfmathprintnumber{\tick}}{6}$},
+        ytick = {1, 2, 3, 4, 5, 6},
+        ymax=6]
+      \addplot[scatter, only marks]
+      coordinates{ % plot 1 data set
+        (1, 1)
+        (2, 1)
+        (3, 1)
+        (4, 1)
+        (5, 1)
+        (6, 1)
+        % more points...
+      }; %\label{plot_one}
+  
+      % plot 1 legend entry
+      \addlegendimage{/pgfplots/refstyle=plot_one}
+    %   \addlegendentry{plot 1}
+    \end{axis}
+  
+  \end{tikzpicture}
+  
