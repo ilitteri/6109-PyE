@@ -1,0 +1,84 @@
+\documentclass[../../../main.tex]{subfiles}
+
+\begin{definition}[Esperanza de una variable aleatoria discreta]
+    Sea $X$ una $V.A.D.$ con función de probabilidad $p_{X}(x)$, el valor esperado (o media) de $X$ es
+    \begin{equation*}
+        E(X) = \sum_{X \in R_{X}} x \cdot p_{X}(x)
+    \end{equation*}
+    \textit{A veces, usamos la notación $\mu_{X} = E(X)$}
+\end{definition}
+
+\begin{example*} Tiremos un dado\\
+    Si defino mi variable aleatoria como
+    \begin{center}
+        X: "Valor observado al tirar un dado"
+    \end{center}
+    ya sabemos que los valores posibles que puede tomar esa variable son
+    \begin{equation*}
+        R_{X} = \{1, 2, 3, 4, 5, 6\}
+    \end{equation*}
+    y que cada uno tiene una función de probabilidad tal que
+    \begin{equation*}
+        p_{X}(x) = \frac{1}{6}
+        \quad x \in R_{X}
+    \end{equation*}
+    si armamos la tabla y graficamos
+    \begin{table}[H]
+        \begin{center}
+            \begin{tabular}{c|c|c|c|c|c|c}
+                $x$ & 1 & 2 & 3 & 4 & 5 & 6\\ \hline
+                $p_{X}(x)$ & $\frac{1}{6}$ & $\frac{1}{6}$ & $\frac{1}{6}$ & $\frac{1}{6}$ & $\frac{1}{6}$ & $\frac{1}{6}$\\
+            \end{tabular}
+        \end{center}
+    \end{table}
+    \begin{center}
+        \subfile{../../../diagrams/cap3_funcion_probabilidad_1.tex}
+    \end{center}
+    entonces la esperanza se calcula
+    \begin{equation*}
+        \begin{aligned}
+            E(X) &= \sum_{x = 1}^{6} x \cdot p_{X}(x)\\
+                 &= 1 \cdot \frac{1}{6} + 2 \cdot \frac{1}{6} + 3 \cdot \frac{1}{6} + 4 \cdot \frac{1}{6} + 5 \cdot \frac{1}{6} + 6 \cdot \frac{1}{6}\\
+                 &= 3.5
+        \end{aligned}
+    \end{equation*}
+    Cuando calculo esperanza, estoy buscando equilibrio. En este caso el equilibrio está en 3.5 (no necesariamente tiene que se un valor del rango, pero si tiene que estar dentro del intervalo del rango).
+\end{example*}
+
+\begin{defexample}
+    Hallar la esperanza de la cantidad de tiros necesarios de un dado equilibrado hasta observar el primer 6.
+    Lo primero que vamos a hacer es definir la variable aleatoria (en estos casos es más fácil, si se observa, la variable aleatoria es el objeto del cuál me están pidiendo la esperanza), luego
+    \begin{center}
+        X: "Cantidad de tiros hasta observar el primer 6"
+    \end{center}
+    Puedo observar que esta variable tiene una distribución geométrica con parámetro $\frac{1}{6}$, ya que estoy contando cantidad de tiros hasta observar el primer 6, sabemos que cada tiro puede ser 6 o no, de forma independiente y siempre con la misma probabilidad. Además conocemos su rango y su función de probabilidad.
+    \begin{equation*}
+        X \sim \mathcal{G}(\frac{1}{6}) \rightarrow R_{X} = \mathbb{N}, p_{X}(x) = \frac{1}{6} \left(\frac{5}{6}\right)^{x-1}
+        \quad \forall{x \in \mathbb{N}}
+    \end{equation*}
+    Por definición de esperanza
+    \begin{equation*}
+        \begin{aligned}
+            E(X) &= \sum_{x \in R_{X}} x \cdot p_{X}(x)\\
+                 &= \sum_{x = 1}^{\infty} x \cdot \frac{1}{6} \left(\frac{5}{6}\right)^{x-1}
+        \end{aligned}
+    \end{equation*}
+    Para que se vea más sencillo, defino
+    \begin{equation*}
+        p = \frac{1}{6}
+    \end{equation*}
+    luego, me queda la serie
+    \begin{equation*}
+        \begin{aligned}
+            E(X) &= \sum_{x = 1}^{\infty} x \cdot p (1 - p)^{x-1}\\
+                 &= p \sum_{x = 1}^{\infty} \underbrace{x \cdot (1 - p)^{x-1}}_{\frac{\partial}{\partial{p}} (1 - p)^{x} (-1)}\\
+                 &= p \sum_{x = 1}^{\infty}\frac{\partial}{\partial{p}} (1 - p)^{x} (-1)\\
+                 &= - p \frac{\partial}{\partial{p}} \underbrace{\sum_{x = 1}^{\infty} (1 - p)^{x}}_{\text{Serie Geométrica}}\\
+                 &= - p \frac{\partial}{\partial{p}} \left(\frac{1}{1-(1-p)} - 1\right)\\
+                 &= -p \cdot \frac{-1}{p^{2}}\\
+                 &= \frac{1}{p}\\
+                 &= \frac{1}{\frac{1}{6}}\\
+                 &= 6
+        \end{aligned}
+    \end{equation*}
+\end{defexample}
