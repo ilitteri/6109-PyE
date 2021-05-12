@@ -1,0 +1,94 @@
+\documentclass[../../../main.tex]{subfiles}
+
+\begin{definition}[Funciones de probabilidad marginal]
+    Las funciones de probabilidad marginales para $X$ e $Y$ están dadas por
+    \begin{equation*}
+        \begin{aligned}
+            f_{X}(x) &= \int_{-\infty}^{\infty}f_{X, Y}(x, y)dy\\
+            f_{Y}(y) &= \int_{-\infty}^{\infty}f_{X, Y}(x, y)dx\\
+        \end{aligned}
+    \end{equation*}
+\end{definition}
+
+\begin{defexample}
+    Se elige al azar un punto $(x, y)$ en el circulo de centro $(0, 0)$ y radio 1.
+    \begin{enumerate}
+        \item Hallar la función de densidad conjunta del vector aleatorio $(X, Y)$.
+        \item Hallar la probabilidad de que la distancia del punto al centro del círculo sea menor a $0.5$.
+        \item Hallar las funciones de densidad marginal de $X$ e $Y$.
+    \end{enumerate}
+    Interpretando el enunciado, nos deice que $(x, y)$ va a ser un punto seleccionado al azar sobre la región circular $R$. El vector $(X, Y)$ va a tener una distribución uniforme sobre toda la región
+    \begin{equation*}
+        (X, Y) \sim \mathcal{U}(R)
+    \end{equation*}
+    y la función de densidad conjunta debe ser
+    \begin{equation*}
+        f_{X, Y}(x, y) =
+        \left\{
+            \begin{aligned}
+                &k &(x, y) \in R\\
+                &0 &e.o.c.
+            \end{aligned}
+        \right.
+    \end{equation*}
+    y cumplir
+    \begin{enumerate}
+        \item $k \geq 0$
+        \item $$\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}f_{X, Y}(x, y) dx dy = 1$$
+    \end{enumerate}
+    Entonces tengo que hacer
+    \begin{equation*}
+        \begin{aligned}
+            \int\int_{R} k \cdot dxdy &= k \underbrace{\int\int_{R}dxdy}_{\text{Área del círculo}}\\
+                                      &= k \cdot \pi r^{2}\\
+                                      &= k \cdot \pi 1^{2}\\
+        \end{aligned}
+    \end{equation*}
+    \begin{equation*}
+        \Rightarrow k = \frac{1}{\pi}
+    \end{equation*}
+    finalmente
+    \begin{equation*}
+        f_{X, Y}(x, y) =
+        \left\{
+            \begin{aligned}
+                &\frac{1}{\pi} &(x, y) \in R\\
+                &0 &e.o.c.
+            \end{aligned}
+        \right.
+    \end{equation*}
+    \item Nos piden
+    \begin{equation*}
+        P(X^{2}+Y^{2} \leq 0.5)
+    \end{equation*}
+    Voy a ir al soporte, y representar lo que me están pidiendo, que es, si tengo el círculo de radio $0.5$ cuál es la probabilidad de caer ahí adentro. Esa probabilidad la puedo ver como la porción de volúmen sobre la región cubierta. Por geometría puedo calcular el volúmen
+    \begin{equation*}
+        \begin{aligned}
+            P(X^{2}+Y^{2} \leq 0.5) &= \pi \cdot 0.5^{2} \cdot \frac{1}{\pi}\\
+                                    &= \frac{1}{4}
+        \end{aligned}
+    \end{equation*}
+    \item Nos piden las funciones de probabilidad marginales, que por definición son
+    \begin{equation*}
+        \begin{aligned}
+            f_{X}(x) &= \int_{-\infty}^{\infty}f_{X, Y}(x, y)dy\\
+                     &= 
+                        \left\{
+                            \begin{aligned}
+                                &0 &x < -1\text{ o }x>1\\
+                                &\int_{-\sqrt{1-x^{2}}}^{\sqrt{1-x^{2}}}\frac{1}{\pi}dy &-1 \leq x \leq 1
+                            \end{aligned}
+                        \right.\\
+                     &= \frac{2}{\pi} \cdot \sqrt{1-x^{2}} \cdot \mathbf{1}\{-1\leq x \leq 1\}\\
+            f_{Y}(y) &= \int_{-\infty}^{\infty}f_{X, Y}(x, y)dx\\
+                     &= 
+                        \left\{
+                            \begin{aligned}
+                                &0 &y < -1\text{ o }y>1\\
+                                &\int_{-\sqrt{1-y^{2}}}^{\sqrt{1-y^{2}}}\frac{1}{\pi}dx &-1 \leq y \leq 1
+                            \end{aligned}
+                        \right.\\
+                     &= \frac{2}{\pi} \cdot \sqrt{1-y^{2}} \cdot \mathbf{1}\{-1\leq y \leq 1\}
+        \end{aligned}
+    \end{equation*}
+\end{defexample}
