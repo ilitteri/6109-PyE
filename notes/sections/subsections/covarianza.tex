@@ -1,0 +1,70 @@
+\documentclass[../../main.tex]{subfiles}
+
+\begin{definition}
+    Sean $X$ e $Y$ dos variables aleatorias
+    \begin{equation*}
+        Cov(X, Y) = E((X - E(X)) \cdot (Y - E(Y)))
+    \end{equation*}
+\end{definition}
+
+\begin{properties}
+    \begin{enumerate}
+        \item $Cov(X, Y) = E(X \cdot Y) - E(X) \cdot E(Y)$
+        \begin{proof}
+            \begin{equation*}
+                \begin{aligned}
+                    Cov(X, Y) &= E((X - E(X)) \cdot (Y - E(Y)))\\
+                              &= E(X \cdot Y - x \cdot E(Y) - Y \cdot E(X) + E(X) \cdot E(Y))\\
+                              &= E(X \cdot Y) - E(Y) \cdot E(X) - E(X) \cdot E(Y) + E(X) \cdot E(Y)\\
+                              &= E(X \cdot Y) - E(X) \cdot E(Y)
+                \end{aligned}
+            \end{equation*}
+        \end{proof}
+        \item Si $X$ e $Y$ son independientes entonces la esperanza del producto entre ellas se puede calcular como el producto de sus esperanzas.
+        \begin{equation*}
+            E(X \cdot Y) = E(X) \cdot E(Y)
+        \end{equation*}
+        y por lo tanto
+        \begin{equation*}
+            Cov(X, Y) = 0
+        \end{equation*}
+    \end{enumerate}
+    \item $Cov(a + bX, c +dY) = b \cdot d \cdot Cov(X, Y)$
+    \begin{proof}
+        \begin{equation*}
+            \begin{aligned}
+                foto 
+            \end{aligned}
+        \end{equation*}
+    \end{proof}
+    \item $Cov(X + Y, Z) = Cov(X, Z) + Cov(Y, Z)$.
+    \begin{proof}
+        
+    \end{proof}
+    \item $Var(X + Y) = Var(X) + Var(Y) + 2 \cdot Cov(X, Y)$.
+    \begin{proof}
+        \begin{equation*}
+            \begin{aligned}
+                foto
+            \end{aligned}
+        \end{equation*}
+    \end{proof}
+\end{properties}
+
+\subsubsection{Coeficiente de Correlación}
+
+\begin{definition}
+    El coeficiente de correlación entre las variables aleatorias $X$ e $Y$ está dado por
+    \begin{equation*}
+        \rho_{X, Y} = \frac{Cov(X, Y)}{\sqrt{Var(X) \cdot Var(Y)}}
+    \end{equation*}
+    Lo que estamos haciendo es llevar a que el valor absoluto de la covarianza esté entre 0 y 1.
+\end{definition}
+
+\begin{property}
+    \begin{equation*}
+        |\rho_{X, Y}| = 1 \leftrightarrow P(aX + bY) = 1
+    \end{equation*}
+\end{property}
+
+Si $\rho_{X, Y} = 0$ eso nos dice que no hay correlación lineal entre las variables, lo que puede significar que no hay dependencia o que hay correlación de otro tipo.
