@@ -1,0 +1,31 @@
+\documentclass[../../main.tex]{subfiles}
+
+\subsubsection{Esperanza de una Función de un Vector Aleatorio Discreto}
+\subfile{subsubsections/esperanza_funcion_vector_aleatorio_discreto.tex}
+
+\subsubsection{Esperanza de una Función de un Vector Aleatorio Continuo}
+\subfile{subsubsections/esperanza_funcion_vector_aleatorio_continuo.tex}
+
+\subsubsection{Propiedades de Orden}
+\subfile{subsubsections/propiedades_de_orden.tex}
+
+\begin{properties}
+    \begin{enumerate}
+        \item $E\left(\sum_{i=1}^{n}a_{i}X_{i}\right) = \sum_{i=1}^{n}a_{i}E(X_{i})$
+        \begin{proof}
+            
+        \end{proof}
+        \item Si $X_{1}, \dots, X_{n}$ son independientes entonces
+        \begin{equation*}
+            E\left(\prod_{i=1}^{n}X_{i}\right) = \prod_{i=1}^{n}E(X_{i}) 
+        \end{equation*}
+        \begin{proof}
+            \begin{equation*}
+                \begin{aligned}
+                    E(X \cdot Y) &= \int_{-\infty}^{\infty}\int_{-\infty}^{\infty} xyf_{X}(x)f_{Y}(y) dx dy\\
+                                 &= \underbrace{\int_{-\infty}^{\infty}xf_{X}(x)dx}_{E(X)} \underbrace{\int_{-\infty}^{\infty}yf_{Y}(y)dy}_{E(Y)}
+                \end{aligned}
+            \end{equation*}
+        \end{proof}
+    \end{enumerate}
+\end{properties}
